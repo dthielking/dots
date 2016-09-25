@@ -1,8 +1,7 @@
 # Is this sufficient?
 # zstyle :compinstall filename '/home/$USERNAME/.zshrc
-#zstyle ':completion:*' auto-description 'specify: %d'
+#
 #zstyle ':completion:*' completer _expand _complete _correct _approximate
-#zstyle ':completion:*' format 'Completing %d'
 #zstyle ':completion:*' group-name ''
 #zstyle ':completion:*' menu select=2
 #eval "$(dircolors -b)"
@@ -35,7 +34,13 @@ umask 077
 autoload -Uz compinit
 compinit
 
+export EDITOR="vim"
+
 # Doing menu completion for arrow keys
+# List unkown parameter as Auto-Description STRING
+zstyle ':completion:*' auto-description 'Auto-Description: %d'
+# Add header after <TAB> completion. Specified what actuall is completed
+zstyle ':completion:*' format '%BCompleting: %F{blue}%d%f%b'
 zstyle ':completion:*' menu
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' verbose true
@@ -43,6 +48,10 @@ zstyle ':completion:*' verbose true
 
 # Use vi keybindings even if our EDITOR is set to emacs
 bindkey -v
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
 
 # zsh Options
 # Notify bei Backgroundjob erst nach return
@@ -78,8 +87,8 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias hgrep='history 0 |grep --color=auto '
 alias ggrep='git grep'
-alias fuck='sudo !!'
-alias please='sudo !!'
+alias fuck='sudo `history -n -1`'
+alias please=fuck
 
 # Suffix Aliases
 alias -s log=vim
