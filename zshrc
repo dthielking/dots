@@ -53,33 +53,53 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
 # zsh Options {{{
+  ## Changing Directories
+    # change dir without cd infront
+    setopt AUTO_CD
+ 
+  ## Completion
+    # sets cursor to the end of completion word
+    setopt ALWAYS_TO_END
 
-# notify bg job after return
-setopt NO_NOTIFY 
-# no terminating of background jobs if shell is terminated
-setopt NO_HUP 
-# use array indexes beginning with 0
-setopt KSH_ARRAYS
-# restore traps and options aufter function call
-setopt LOCAL_OPTIONS
-setopt LOCAL_TRAPS
-# don't ask for rm * command
-setopt RM_STAR_SILENT
-# share/synchronise history with shells
-setopt SHARE_HISTORY
-# no duplicates in history
-setopt HIST_IGNORE_DUPS
-# delete unused spaces infront of commands in history
-setopt HIST_REDUCE_BLANKS
-# no shell beeping
-setopt NO_BEEP
-# no beep at end of history
-setopt NO_HIST_BEEP
-# change dir without cd infront
-setopt AUTO_CD
-# sets cursor to the end of completion word
-setopt ALWAYS_TO_END
+  ## History Options
+    # share/synchronise history with shells
+    setopt SHARE_HISTORY
+    # no duplicates in history
+    setopt HIST_IGNORE_ALL_DUPS
+    # delete unused spaces infront of commands in history
+    setopt HIST_REDUCE_BLANKS
+    # no beep at end of history
+    setopt NO_HIST_BEEP
+  
+  ## Input/Output Options
+    # don't ask for rm * command just do it
+    setopt RM_STAR_SILENT
+  
+  ## Job Control Options
+    # no terminating of background jobs if shell is terminated
+    setopt NO_HUP 
+    # use long format for jobs lists
+    setopt LONG_LIST_JOBS
+    # notify bg job after <RETURN> 
+    setopt NO_NOTIFY 
 
+  ## Scipts and Functions
+    # restore traps and options after function call
+    setopt LOCAL_OPTIONS
+    setopt LOCAL_TRAPS
+    # $? contains the real error number of the rightmost failed command
+    setopt PIPE_FAIL
+
+  ## Shell Emulation
+    # use array indexes beginning with 0
+    setopt KSH_ARRAYS
+
+  ## zle Options
+    # enable zle mode
+    setopt ZLE
+    # no shell beeping
+    setopt NO_BEEP
+  
 # }}} end zsh options
 
 # Some Aliases
