@@ -1,6 +1,5 @@
 # Is this sufficient?
 # zstyle :compinstall filename '/home/$USERNAME/.zshrc
-#
 #zstyle ':completion:*' completer _expand _complete _correct _approximate
 #zstyle ':completion:*' group-name ''
 #zstyle ':completion:*' menu select=2
@@ -53,30 +52,35 @@ bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
-# zsh Options
-# Notify bei Backgroundjob erst nach return
+# zsh Options {{{
+
+# notify bg job after return
 setopt NO_NOTIFY 
-# Beenden der Backgroundjobs durch beenden der Shell deaktiviert
+# no terminating of background jobs if shell is terminated
 setopt NO_HUP 
-# "Normales" Verhalten von Arrays beginn bei 0
+# use array indexes beginning with 0
 setopt KSH_ARRAYS
-# Restore der Vorherigen Optionen/Traps bei function change
+# restore traps and options aufter function call
 setopt LOCAL_OPTIONS
 setopt LOCAL_TRAPS
-# Nachfrage ausschalten ob rm * löschen darf
+# don't ask for rm * command
 setopt RM_STAR_SILENT
-# History erweitern und in allen Shells gleich
+# share/synchronise history with shells
 setopt SHARE_HISTORY
-# Keine doppelten Eintraege in der History
+# no duplicates in history
 setopt HIST_IGNORE_DUPS
-# Leerzeichen loeschen
+# delete unused spaces infront of commands in history
 setopt HIST_REDUCE_BLANKS
-# Generelles Beep aus
+# no shell beeping
 setopt NO_BEEP
-# Beep aus bei Ende der History
+# no beep at end of history
 setopt NO_HIST_BEEP
-# Ohne 'cd' in Verzeichnisse wechseln
+# change dir without cd infront
 setopt AUTO_CD
+# sets cursor to the end of completion word
+setopt ALWAYS_TO_END
+
+# }}} end zsh options
 
 # Some Aliases
 alias ll='ls -l --color=auto'
@@ -95,11 +99,11 @@ alias -s log=vim
 alias -s pl=vim
 
 setopt PROMPT_SUBST
-# Erstellen des Prompts
-# Linkes Prompt
+# Configure Prompt
+# Left Prompt
 tick='\u2713'
 PS1='[%n@%m:%1~]%(?..(%F{red}%?%f%))%# '
-# Rechtes Prompt
+# Right Prompt
 RPS1='%(t.[Ding!].%(t30.[Dong!].[%T])'
 
 
