@@ -56,7 +56,7 @@ bindkey '^N' history-search-forward
   ## Changing Directories
     # change dir without cd infront
     setopt AUTO_CD
- 
+
   ## Completion
     # sets cursor to the end of completion word
     setopt ALWAYS_TO_END
@@ -70,11 +70,11 @@ bindkey '^N' history-search-forward
     setopt HIST_REDUCE_BLANKS
     # no beep at end of history
     setopt NO_HIST_BEEP
-  
+
   ## Input/Output Options
     # don't ask for rm * command just do it
     setopt RM_STAR_SILENT
-  
+
   ## Job Control Options
     # no terminating of background jobs if shell is terminated
     setopt NO_HUP 
@@ -99,7 +99,7 @@ bindkey '^N' history-search-forward
     setopt ZLE
     # no shell beeping
     setopt NO_BEEP
-  
+
 # }}} end zsh options
 
 # Some Aliases
