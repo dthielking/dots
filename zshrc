@@ -1,22 +1,15 @@
-# Is this sufficient?
-#zstyle :compinstall filename '/home/$USERNAME/.zshrc
 #zstyle ':completion:*' completer _expand _complete _correct _approximate
-#zstyle ':completion:*' group-name ''
+#
 #zstyle ':completion:*' menu select=2
-#eval "$(dircolors -b)"
-#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #zstyle ':completion:*' list-colors ''
 #zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 #zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 #zstyle ':completion:*' menu select=long
 #zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 #zstyle ':completion:*' use-compctl false
-#zstyle ':completion:*' verbose true
 #
 #zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 #zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-
-#setopt histignorealldups sharehistory
 
 # Set up the prompt
 zstyle ':completion:*:*:-command-:*:commands' group-name commands
@@ -31,6 +24,7 @@ umask 077
 
 # Enable autocompletion for commands, hostnames etc.
 export EDITOR="vim"
+eval "$(dircolors -b)"
 
 # BEGIN Completion System ZSH {{{
 
@@ -44,11 +38,17 @@ compinit
   zstyle ':completion:*' auto-description 'Auto-Description: %d'
   # Add header after <TAB> completion. Specified what actuall is completed
   zstyle ':completion:*' format '%BCompleting: %F{blue}%d%f%b'
+  # Enables Arrowkey selection after completion RTFM!!!
   zstyle ':completion:*' menu select
-  zstyle ':completion:*' list-colors ''
+  # Use verbose output to get more information
   zstyle ':completion:*' verbose true
+  # Use TAG names as group names istead of custom ones
+  zstyle ':completion:*' group-name ''
+  # Takes ls colors to highlight completion output group-name must set empty
+  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # }}} END Completion System
+
 # Use vi keybindings even if our EDITOR is set to emacs
 bindkey -v
 bindkey '^R' history-incremental-search-backward
