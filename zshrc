@@ -1,5 +1,5 @@
 # Is this sufficient?
-# zstyle :compinstall filename '/home/$USERNAME/.zshrc
+#zstyle :compinstall filename '/home/$USERNAME/.zshrc
 #zstyle ':completion:*' completer _expand _complete _correct _approximate
 #zstyle ':completion:*' group-name ''
 #zstyle ':completion:*' menu select=2
@@ -30,21 +30,25 @@ HISTFILE=~/.history
 umask 077
 
 # Enable autocompletion for commands, hostnames etc.
+export EDITOR="vim"
+
+# BEGIN Completion System ZSH {{{
+
+# Load the completion system
 autoload -Uz compinit
 compinit
 
-export EDITOR="vim"
+## Construction description:
+## ':competion:function:completer:command:argument:tag'
+  # List unkown parameter as Auto-Description STRING
+  zstyle ':completion:*' auto-description 'Auto-Description: %d'
+  # Add header after <TAB> completion. Specified what actuall is completed
+  zstyle ':completion:*' format '%BCompleting: %F{blue}%d%f%b'
+  zstyle ':completion:*' menu select
+  zstyle ':completion:*' list-colors ''
+  zstyle ':completion:*' verbose true
 
-# Doing menu completion for arrow keys
-# List unkown parameter as Auto-Description STRING
-zstyle ':completion:*' auto-description 'Auto-Description: %d'
-# Add header after <TAB> completion. Specified what actuall is completed
-zstyle ':completion:*' format '%BCompleting: %F{blue}%d%f%b'
-zstyle ':completion:*' menu
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' verbose true
-
-
+# }}} END Completion System
 # Use vi keybindings even if our EDITOR is set to emacs
 bindkey -v
 bindkey '^R' history-incremental-search-backward
