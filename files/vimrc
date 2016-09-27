@@ -1,6 +1,7 @@
-set list							" showing newline as $
-set number						" show line numbers
-syntax on							" set syntax highlighting on
-set tabstop=2					" tabs in files are four spaces
-set softtabstop=2			" same as tabstop but for my one <TAB>
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<	" showing invisible chars
+set list            " showing newline as $
+set number          " show line numbers
+syntax on           " set syntax highlighting on
+set tabstop=4       " tabs in files are four spaces
+set softtabstop=4   " same as tabstop but for my one <TAB>
+set expandtab       " tabs are spaces
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<	 " showing invisible chars
