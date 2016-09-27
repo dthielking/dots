@@ -24,13 +24,15 @@ for DOT_FILE in `ls`
 		then
 			mkdir ${DOT_BACKUP_DIR}
 		fi
-echo ${HOME}/.${DOT_FILE}
 		if [ -f ${HOME}/.${DOT_FILE} ]
 		then
 			echo "Backup: .${DOT_FILE}"
 			mv ${HOME}/.${DOT_FILE} ${DOT_BACKUP_DIR}/${DOT_FILE}.bak
 		fi
 
-		# Deployment function
-		cp ${DOT_FILES_DIR}/${DOT_FILE} ${HOME}/.${DOT_FILE}
+		if [ -f ${DOT_BACKUP_DIR}/${DOT_FILE}.bak ]
+		then
+			# Deployment function
+			cp ${DOT_FILES_DIR}/${DOT_FILE} ${HOME}/.${DOT_FILE}
+		fi
 done
