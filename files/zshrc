@@ -125,10 +125,10 @@ alias -s pl=vim
 setopt PROMPT_SUBST
 # Configure Prompt
 # Left Prompt
-tick='\u2713'
 PS1='[%n@%m:%1~]%(?..(%F{red}%?%f%))%# '
 # Right Prompt
-RPS1='%(t.[Ding!].%(t30.[Dong!].[%T])'
+#RPS1='%(t.[Ding!].%(t30.[Dong!].[%T]))'
+RPS1='[%T]'
 
 
 # Force to clear Terminal after every Logout
