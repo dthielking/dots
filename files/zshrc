@@ -22,30 +22,29 @@ HISTFILE=~/.history
 # Set umask to a more restrictive one
 umask 077
 
-# Enable autocompletion for commands, hostnames etc.
 export EDITOR="vim"
 eval "$(dircolors -b)"
 
 # BEGIN Completion System ZSH {{{
 
-# Load the completion system
-autoload -Uz compinit
-compinit
+    # Load the completion system
+    autoload -Uz compinit
+    compinit
 
-## Construction description:
-## ':competion:function:completer:command:argument:tag'
-  # List unkown parameter as Auto-Description STRING
-  zstyle ':completion:*' auto-description 'Auto-Description: %d'
-  # Add header after <TAB> completion. Specified what actuall is completed
-  zstyle ':completion:*' format '%BCompleting: %F{blue}%d%f%b'
-  # Enables Arrowkey selection after completion RTFM!!!
-  zstyle ':completion:*' menu select
-  # Use verbose output to get more information
-  zstyle ':completion:*' verbose true
-  # Use TAG names as group names istead of custom ones
-  zstyle ':completion:*' group-name ''
-  # Takes ls colors to highlight completion output group-name must set empty
-  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+    ## Construction description:
+    ## ':competion:function:completer:command:argument:tag'
+    # List unkown parameter as Auto-Description STRING
+    zstyle ':completion:*' auto-description 'Auto-Description: %d'
+    # Add header after <TAB> completion. Specified what actuall is completed
+    zstyle ':completion:*' format '%BCompleting: %F{blue}%d%f%b'
+    # Enables Arrowkey selection after completion RTFM!!!
+    zstyle ':completion:*' menu select
+    # Use verbose output to get more information
+    zstyle ':completion:*' verbose true
+    # Use TAG names as group names istead of custom ones
+    zstyle ':completion:*' group-name ''
+    # Takes ls colors to highlight completion output group-name must set empty
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # }}} END Completion System
 
@@ -57,15 +56,15 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
 # zsh Options {{{
-  ## Changing Directories
+    ## Changing Directories
     # change dir without cd infront
     setopt AUTO_CD
 
-  ## Completion
+    ## Completion
     # sets cursor to the end of completion word
     setopt ALWAYS_TO_END
 
-  ## History Options
+    ## History Options
     # share/synchronise history with shells
     setopt SHARE_HISTORY
     # no duplicates in history
@@ -75,11 +74,11 @@ bindkey '^N' history-search-forward
     # no beep at end of history
     setopt NO_HIST_BEEP
 
-  ## Input/Output Options
+    ## Input/Output Options
     # don't ask for rm * command just do it
     setopt RM_STAR_SILENT
 
-  ## Job Control Options
+    ## Job Control Options
     # no terminating of background jobs if shell is terminated
     setopt NO_HUP 
     # use long format for jobs lists
@@ -87,18 +86,18 @@ bindkey '^N' history-search-forward
     # notify bg job after <RETURN> 
     setopt NO_NOTIFY 
 
-  ## Scipts and Functions
+    ## Scipts and Functions
     # restore traps and options after function call
     setopt LOCAL_OPTIONS
     setopt LOCAL_TRAPS
     # $? contains the real error number of the rightmost failed command
     setopt PIPE_FAIL
 
-  ## Shell Emulation
+    ## Shell Emulation
     # use array indexes beginning with 0
     setopt KSH_ARRAYS
 
-  ## zle Options
+    ## zle Options
     # enable zle mode
     setopt ZLE
     # no shell beeping
@@ -133,6 +132,6 @@ RPS1='[%T]'
 
 # Force to clear Terminal after every Logout
 TRAPEXIT() {
-  if [[ ! -o login ]]; then
-  fi
+    if [[ ! -o login ]]; then
+    fi
 }
