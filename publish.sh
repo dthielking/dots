@@ -7,16 +7,17 @@
 ## Date:    09/26/2016
 
 # Absolute path this script is in. /home/user/bin
-SCRIPTPATH=`dirname $(readlink -f $0)`				# Set absolut path to script directory
-DOT_FILES_DIR="$SCRIPTPATH/files"							# Set files directory
+REPOPATH=`dirname $(readlink -f $0)`					# Set absolut path to script directory
+DOT_FILES_DIR="$REPOPATH/files"							# Set files directory
 DOT_BACKUP_DIR="$HOME/dots_backup"						# Set Backup directory
 
 
-echo "Doing backups of your current files\n"
-echo "you will find your old files in ${DOT_BACKUP_DIR}/"
-echo "\n\n"
+echo "Doing backups of your current files"
+echo "you will find your old files in ${DOT_BACKUP_DIR}"
 
-for DOT_FILE in `ls $DOT_FILES_DIR/*`
+cd $DOT_FILES_DIR
+
+for DOT_FILE in `ls`
 	do
 		# Backup function
 		if [ ! -d ${DOT_BACKUP_DIR} ]
@@ -26,12 +27,10 @@ for DOT_FILE in `ls $DOT_FILES_DIR/*`
 echo ${HOME}/.${DOT_FILE}
 		if [ -f ${HOME}/.${DOT_FILE} ]
 		then
-			echo "Backup: .${$DOT_FILE}\n"
+			echo "Backup: .${DOT_FILE}"
 			mv ${HOME}/.${DOT_FILE} ${DOT_BACKUP_DIR}/${DOT_FILE}.bak
-			chown 600 ${DOT_BACKUP_DIR}/${DOT_FILE}
 		fi
 
 		# Deployment function
 		cp ${DOT_FILES_DIR}/${DOT_FILE} ${HOME}/.${DOT_FILE}
 done
-
