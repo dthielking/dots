@@ -1,7 +1,23 @@
-set list            " showing newline as $
-set number          " show line numbers
-syntax on           " set syntax highlighting on
-set tabstop=4       " tabs in files are four spaces
-set softtabstop=4   " same as tabstop but for my one <TAB>
-set expandtab       " tabs are spaces
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<	 " showing invisible chars
+set list                            " showing newline as $
+set number                          " show line numbers
+syntax on                           " set syntax highlighting on
+set tabstop=4                       " tabs in files are four spaces
+set softtabstop=4                   " same as tabstop but for my one <TAB>
+set expandtab                       " tabs are spaces
+set listchars=eol:¬,tab:>·,trail:·  " showing invisible chars
+set wildmenu                        " visual autocomplete for command menu
+set cursorline                      " highlight current line
+set incsearch                       " search as characters are entered
+set hlsearch                        " highlight matches
+" turn off search highlight
+set foldenable      " enable folding
+"" Key mappings
+" Map comma as additional meta char
+let mapleader=","
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+" Stop search highlighting with keystroke ,<space>
+nnoremap ,<space> :nohlsearch<CR>
+" Use keystroke jk instead of <esc>
+inoremap jk <esc>
