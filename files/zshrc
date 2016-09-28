@@ -91,7 +91,10 @@ bindkey '^N' history-search-forward
     setopt LOCAL_OPTIONS
     setopt LOCAL_TRAPS
     # $? contains the real error number of the rightmost failed command
-    setopt PIPE_FAIL
+    # Seems not to work on all systems problems on (Debian 8 Jessy stable)
+    # Error: no such option PIPE_FAIL 
+    # ZSH Version: 4.3.10
+    #    setopt PIPE_FAIL
 
     ## Shell Emulation
     # use array indexes beginning with 0
