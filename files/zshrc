@@ -119,7 +119,8 @@ alias hgrep='history 0 |grep --color=auto '
 alias ggrep='git grep'
 alias fuck='sudo `history -n -1`'
 alias please=fuck
-alias sysupgrade='sudo apt-get update && sudo apt-get upgrade && apt-get dist-upgrade'
+alias sysupgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade'
+alias ports='netstat -tlpen'
 
 # Suffix Aliases
 alias -s log=vim
