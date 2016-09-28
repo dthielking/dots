@@ -108,7 +108,7 @@ bindkey '^N' history-search-forward
 
 # }}} end zsh options
 
-# Some Aliases
+# BEGIN Aliases {{{
 alias ll='ls -l --color=auto'
 alias la='ls -lA --color=auto'
 alias l='ls -CF --color=auto'
@@ -119,10 +119,13 @@ alias hgrep='history 0 |grep --color=auto '
 alias ggrep='git grep'
 alias fuck='sudo `history -n -1`'
 alias please=fuck
+alias sysupgrade='sudo apt-get update && sudo apt-get upgrade && apt-get dist-upgrade'
 
 # Suffix Aliases
 alias -s log=vim
 alias -s pl=vim
+
+# }}} END
 
 setopt PROMPT_SUBST
 # Configure Prompt
