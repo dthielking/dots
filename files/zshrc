@@ -22,9 +22,6 @@ HISTFILE=~/.history
 # Set /sbin directory in PATH variable to call ifconfig, route etc.
 export PATH=~/bin:/sbin:$PATH
 
-# Set umask to a more restrictive one
-umask 077
-
 export EDITOR="vim"
 eval "$(dircolors -b)"
 
