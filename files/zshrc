@@ -133,8 +133,7 @@ setopt PROMPT_SUBST
 # Left Prompt
 PS1='[%n@%m:%1~]%(?..(%F{red}%?%f%))%# '
 # Right Prompt
-#RPS1='%(t.[Ding!].%(t30.[Dong!].[%T]))'
-RPS1='[%T]'
+RPS1='%(t.[Ding!].%(30t.[Dong!].[%T]))'
 
 
 # Force to clear Terminal after every Logout
