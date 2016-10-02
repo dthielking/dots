@@ -25,6 +25,18 @@ export PATH=~/bin:/sbin:$PATH
 export EDITOR="vim"
 eval "$(dircolors -b)"
 
+# BEGIN Functions {{{
+
+git_branch () {
+branch_name=`git symbolic-ref --quiet --short HEAD 2> /dev/null`
+    if [ $? -eq 0 ]
+    then
+        echo " %F{magenta}$branch_name%f "
+    fi
+}
+
+# }}} END
+
 # BEGIN Completion System ZSH {{{
 
     # Load the completion system
@@ -142,7 +154,7 @@ alias -s pl=vim
 setopt PROMPT_SUBST
 # Configure Prompt
 # Left Prompt
-PS1='[%(!.%F{red}%n%f@%F{yellow}%m%f.%F{green}%n%f@%F{yellow}%m%f):%F{blue}%1~%f]%(?..(%F{red}%?%f%))%# '
+PS1='[%(!.%F{red}%n%f@%F{yellow}%m%f.%F{green}%n%f@%F{yellow}%m%f):%F{blue}%1~%f]$(git_branch)%(?..(%F{red}%?%f%))%# '
 # Right Prompt
 RPS1='%(t.[Ding!].%(30t.[Dong!].[%T]))'
 
