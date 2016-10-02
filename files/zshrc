@@ -12,8 +12,8 @@
 #zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Set up the prompt
-zstyle ':completion:*:*:-command-:*:commands' group-name commands
-zstyle ':completion:*:*:-command-:*:functions' group-name functions
+#zstyle ':completion:*:*:-command-:*:commands' group-name commands
+#zstyle ':completion:*:*:-command-:*:functions' group-name functions
 # Keep 10000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
@@ -131,7 +131,7 @@ alias -s pl=vim
 setopt PROMPT_SUBST
 # Configure Prompt
 # Left Prompt
-PS1='[%n@%m:%1~]%(?..(%F{red}%?%f%))%# '
+PS1='[%(!.%F{red}%n@%m%f.%F{green}%n%f@%F{yellow}%m%f):%F{blue}%1~%f]%(?..(%F{red}%?%f%))%# '
 # Right Prompt
 RPS1='%(t.[Ding!].%(30t.[Dong!].[%T]))'
 
