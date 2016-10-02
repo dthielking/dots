@@ -54,6 +54,9 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
+# move word forward/reverse with <CTRL>+left/right arrow key
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
 
 # zsh Options {{{
     ## Changing Directories
