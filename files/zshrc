@@ -119,11 +119,19 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias hgrep='history 0 |grep --color=auto '
-alias ggrep='git grep'
 alias fuck='sudo `history -n -1`'
 alias please=fuck
 alias sysupgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade'
 alias ports='netstat -tlpen'
+# git aliase
+alias ggrep='git grep'
+alias gst='git status'
+alias gad='git add'
+alias gcom='git commit -v'
+alias giff='git diff'
+# No glob aliases
+alias find='noglob find'
+alias systemctl='noglog systemctl'
 
 # Suffix Aliases
 alias -s log=vim
