@@ -139,11 +139,13 @@ alias ports='netstat -tlpen'
 alias ggrep='git grep'
 alias gst='git status'
 alias gad='git add'
+alias gadd=gad
 alias gcom='git commit -v'
+alias gom=gcom
 alias giff='git diff'
 # No glob aliases
 alias find='noglob find'
-alias systemctl='noglog systemctl'
+alias systemctl='noglob systemctl'
 
 # Suffix Aliases
 alias -s log=vim
