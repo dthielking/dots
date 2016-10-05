@@ -11,25 +11,20 @@ REPOPATH=`dirname $(readlink -f $0)`    # Set absolut path to script directory
 DOT_FILES_DIR="$REPOPATH/files"         # Set files directory
 DOT_BACKUP_DIR="$HOME/dots_backup"      # Set Backup directory
 
-while getopts iush option
-do
-    case $option in
-        i)  rollout;;
-        u)  cd $REPOPATH && git pull && rollout;;
-        s)  cd $REPOPATH && git status;;
-        h|*)  echo "HELP:"
-            echo "\t-i install local files"
-            echo "\t-u to upgrade all dotfiles"
-            echo "\t-s to check for updates"
-            echo "\t-h for help"
-    esac
-done
-
 rollout() {
     echo "Doing backups of your current files"
     echo "you will find your old files in ${DOT_BACKUP_DIR}"
 
     cd $DOT_FILES_DIR
+
+    for DOT_FILE in `ls`
+    do
+        # Deployment function
+        cp ${DOT_FILES_DIR}/${DOT_FILE} ${HOME}/.${DOT_FILE}
+    done
+}
+
+backup () {
 
     for DOT_FILE in `ls`
     do
@@ -44,8 +39,24 @@ rollout() {
             echo "Backup: .${DOT_FILE}"
             mv ${HOME}/.${DOT_FILE} ${DOT_BACKUP_DIR}/${DOT_FILE}.bak
         fi
-
-        # Deployment function
-        cp ${DOT_FILES_DIR}/${DOT_FILE} ${HOME}/.${DOT_FILE}
     done
 }
+usage () {
+echo "HELP:"
+echo "\t-i install local files"
+echo "\t-u to upgrade all dotfiles"
+echo "\t-s to check for updates"
+echo "\t-h for help"
+}
+
+while $#
+do
+    case $1 in
+        b)  backup;;
+        i)  rollout;;
+        u)  cd $REPOPATH && git pull && rollout;;
+        s)  cd $REPOPATH && git status;;
+        h|-*|*)  usage && return;;
+    esac
+    shift
+done
