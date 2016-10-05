@@ -50,14 +50,14 @@ usage () {
     echo -e "\t-h for help"
 }
 
-while $#
+while [ $# -gt 0 ]
 do
     case $1 in
-        b)  backup;;
-        i)  rollout;;
-        u)  cd $REPOPATH && git pull && rollout;;
-        s)  cd $REPOPATH && git status;;
-        h|-*|*)  usage && return;;
+        -b)  backup;;
+        -i)  rollout;;
+        -u)  cd $REPOPATH && git pull && rollout;;
+        -s)  cd $REPOPATH && git status;;
+        -h|-*|*)  usage && return;;
     esac
     shift
 done

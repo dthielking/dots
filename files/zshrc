@@ -147,7 +147,7 @@ alias giff='git diff'
 alias find='noglob find'
 alias systemctl='noglob systemctl'
 # Alias for sourcing .zshrc
-zre='source ~/.zshrc'
+alias zre='source ~/.zshrc'
 
 # Suffix Aliases
 alias -s log=vim
@@ -158,7 +158,7 @@ alias -s pl=vim
 setopt PROMPT_SUBST
 # Configure Prompt
 # Left Prompt
-PS1='[%(!.%F{red}%n%f@%F{yellow}%m%f.%F{green}%n%f@%F{yellow}%m%f):%F{blue}%1~%f]$(git_branch)%(?..(%F{red}%?%f%))%# '
+PS1='[%(!.%F{red}%n%f@%F{yellow}%m%f.%F{green}%n%f@%F{yellow}%m%f):%F{cyan}%1~%f]$(git_branch)%(?..(%F{red}%?%f%))%# '
 # Right Prompt
 RPS1='%(t.[Ding!].%(30t.[Dong!].[%T]))'
 
