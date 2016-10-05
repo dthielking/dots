@@ -8,6 +8,7 @@ set listchars=eol:$,tab:»·,trail:·
 " enable syntax highlighting and colorscheme
 " and some other special visualization modes
 syntax on                           " set syntax highlighting on
+set number                          " set line numbers on
 colorscheme darkblue                " set colorscheme to darkblue
 set colorcolumn=100                 " sets a vertical column for orientation
 set cursorline                      " highlight current line
