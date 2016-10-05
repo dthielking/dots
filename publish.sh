@@ -41,12 +41,13 @@ backup () {
         fi
     done
 }
+
 usage () {
-echo "HELP:"
-echo "\t-i install local files"
-echo "\t-u to upgrade all dotfiles"
-echo "\t-s to check for updates"
-echo "\t-h for help"
+    echo -e "HELP:"
+    echo -e "\t-i install local files"
+    echo -e "\t-u to upgrade all dotfiles"
+    echo -e "\t-s to check for updates"
+    echo -e "\t-h for help"
 }
 
 while $#

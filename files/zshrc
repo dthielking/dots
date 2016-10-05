@@ -12,8 +12,8 @@
 #zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Set up the prompt
-zstyle ':completion:*:*:-command-:*:commands' group-name commands
-zstyle ':completion:*:*:-command-:*:functions' group-name functions
+#zstyle ':completion:*:*:-command-:*:commands' group-name commands
+#zstyle ':completion:*:*:-command-:*:functions' group-name functions
 # Keep 10000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
@@ -24,6 +24,18 @@ export PATH=~/bin:/sbin:$PATH
 
 export EDITOR="vim"
 eval "$(dircolors -b)"
+
+# BEGIN Functions {{{
+
+git_branch () {
+branch_name=`git symbolic-ref --quiet --short HEAD 2> /dev/null`
+    if [ $? -eq 0 ]
+    then
+        echo " %F{magenta}$branch_name%f "
+    fi
+}
+
+# }}} END
 
 # BEGIN Completion System ZSH {{{
 
@@ -54,6 +66,9 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
+# move word forward/reverse with <CTRL>+left/right arrow key
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
 
 # zsh Options {{{
     ## Changing Directories
@@ -116,11 +131,19 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias hgrep='history 0 |grep --color=auto '
-alias ggrep='git grep'
 alias fuck='sudo `history -n -1`'
 alias please=fuck
 alias sysupgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade'
 alias ports='netstat -tlpen'
+# git aliase
+alias ggrep='git grep'
+alias gst='git status'
+alias gad='git add'
+alias gcom='git commit -v'
+alias giff='git diff'
+# No glob aliases
+alias find='noglob find'
+alias systemctl='noglog systemctl'
 
 # Suffix Aliases
 alias -s log=vim
@@ -131,7 +154,7 @@ alias -s pl=vim
 setopt PROMPT_SUBST
 # Configure Prompt
 # Left Prompt
-PS1='[%n@%m:%1~]%(?..(%F{red}%?%f%))%# '
+PS1='[%(!.%F{red}%n%f@%F{yellow}%m%f.%F{green}%n%f@%F{yellow}%m%f):%F{blue}%1~%f]$(git_branch)%(?..(%F{red}%?%f%))%# '
 # Right Prompt
 RPS1='%(t.[Ding!].%(30t.[Dong!].[%T]))'
 

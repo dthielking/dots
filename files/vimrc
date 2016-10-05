@@ -1,23 +1,47 @@
-set list                            " showing newline as $
-set number                          " show line numbers
+scriptencoding utf-8                " set character encoding
+set encoding=utf-8                  " same as above?
+
+" showing whitespaces character and configure them
+set list
+set listchars=eol:$,tab:»·,trail:·
+
+" enable syntax highlighting and colorscheme
+" and some other special visualization modes
 syntax on                           " set syntax highlighting on
+colorscheme darkblue                " set colorscheme to darkblue
+set colorcolumn=100                 " sets a vertical column for orientation
+set cursorline                      " highlight current line
+
+"" set vim editor behavior in command mode
+set wildmenu                        " visual autocomplete for command menu
+set viminfo='25,f1,<250,:25,n~/.viminfo " store some info in ~/.viminfo
+
+" set vim editor behavior in text mode
+set autoindent                      " use same indent in nextline as in previous one
+set expandtab                       " tabs are spaces
 set tabstop=4                       " tabs in files are four spaces
 set softtabstop=4                   " same as tabstop but for my one <TAB>
-set expandtab                       " tabs are spaces
-set listchars=eol:¬,tab:>·,trail:·  " showing invisible chars
-set wildmenu                        " visual autocomplete for command menu
-set cursorline                      " highlight current line
+
+" search behavior
 set incsearch                       " search as characters are entered
 set hlsearch                        " highlight matches
-" turn off search highlight
+" Stop search highlighting with keystroke ,<space>
+nnoremap ,<space> :nohlsearch<CR>
+
+
 set foldenable      " enable folding
+
 "" Key mappings
 " Map comma as additional meta char
 let mapleader=","
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
-" Stop search highlighting with keystroke ,<space>
-nnoremap ,<space> :nohlsearch<CR>
 " Use keystroke jk instead of <esc>
 inoremap jk <esc>
+
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
