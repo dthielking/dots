@@ -57,7 +57,6 @@ branch_name=`git symbolic-ref --quiet --short HEAD 2> /dev/null`
     zstyle ':completion:*' group-name ''
     # Takes ls colors to highlight completion output group-name must set empty
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-    # Take care of ../ and ./ completion like BASH
     zstyle ':completion:*' special-dirs true
 
 # }}} END Completion System
@@ -71,6 +70,30 @@ bindkey '^N' history-search-forward
 # move word forward/reverse with <CTRL>+left/right arrow key
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
+# Press END or Pos 1 to jump to ending or beginning line
+bindkey '^[[1~' beginning-of-line
+bindkey '^[[4~' end-of-line
+#Enable keypad as expected
+bindkey -s "^[Op" "0"
+bindkey -s "^[Ol" "."
+bindkey -s "^[OM" "^M"
+# 1 2 3
+bindkey -s "^[Oq" "1"
+bindkey -s "^[Or" "2"
+bindkey -s "^[Os" "3"
+# 4 5 6
+bindkey -s "^[Ot" "4"
+bindkey -s "^[Ou" "5"
+bindkey -s "^[Ov" "6"
+# 7 8 9
+bindkey -s "^[Ow" "7"
+bindkey -s "^[Ox" "8"
+bindkey -s "^[Oy" "9"
+# + -  * /
+bindkey -s "^[Ok" "+"
+bindkey -s "^[Om" "-"
+bindkey -s "^[Oj" "*"
+bindkey -s "^[Oo" "/"
 
 # zsh Options {{{
     ## Changing Directories
