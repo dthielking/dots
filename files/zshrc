@@ -1,19 +1,9 @@
-#zstyle ':completion:*' completer _expand _complete _correct _approximate
-#
-#zstyle ':completion:*' menu select=2
-#zstyle ':completion:*' list-colors ''
-#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 #zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-#zstyle ':completion:*' menu select=long
-#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-#zstyle ':completion:*' use-compctl false
-#
 #zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 #zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Set up the prompt
-#zstyle ':completion:*:*:-command-:*:commands' group-name commands
-#zstyle ':completion:*:*:-command-:*:functions' group-name functions
+
 # Keep 10000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
@@ -45,18 +35,25 @@ branch_name=`git symbolic-ref --quiet --short HEAD 2> /dev/null`
 
     ## Construction description:
     ## ':competion:function:completer:command:argument:tag'
+    # Disable old compctl completion mode legacy option
+    zstyle ':completion:*' use-compctl false
+    # Enables autocorrection like misspelled words and some other magical features
+    zstyle ':completion:*' completer _expand _complete _correct _approximate
     # List unkown parameter as Auto-Description STRING
     zstyle ':completion:*' auto-description 'Auto-Description: %d'
     # Add header after <TAB> completion. Specified what actuall is completed
     zstyle ':completion:*' format '%BCompleting: %F{blue}%d%f%b'
-    # Enables Arrowkey selection after completion RTFM!!!
+    # Enables Arrowkey selection after completion
     zstyle ':completion:*' menu select
+    # Shows Lines in precent in menu selection mode
+    zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
     # Use verbose output to get more information
     zstyle ':completion:*' verbose true
     # Use TAG names as group names istead of custom ones
     zstyle ':completion:*' group-name ''
     # Takes ls colors to highlight completion output group-name must set empty
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+    # Adds possibility to go back to the parent folder with cd ..<TAB>
     zstyle ':completion:*' special-dirs true
 
 # }}} END Completion System
