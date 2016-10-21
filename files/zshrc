@@ -74,6 +74,8 @@ bindkey '^[OH' beginning-of-line
 bindkey '^[[4~' end-of-line
 bindkey '^[[F' end-of-line
 bindkey '^[OF' end-of-line
+# Remove char under cursor
+bindkey '^[[3~' delete-char
 
 #Enable keypad as expected
 bindkey -s "^[Op" "0"
