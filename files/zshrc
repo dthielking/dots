@@ -69,7 +69,12 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 # Press END or Pos 1 to jump to ending or beginning line
 bindkey '^[[1~' beginning-of-line
+bindkey '^[[H' beginning-of-line
+bindkey '^[OH' beginning-of-line
 bindkey '^[[4~' end-of-line
+bindkey '^[[F' end-of-line
+bindkey '^[OF' end-of-line
+
 #Enable keypad as expected
 bindkey -s "^[Op" "0"
 bindkey -s "^[Ol" "."
@@ -143,6 +148,8 @@ bindkey -s "^[Oo" "/"
     # no shell beeping
     setopt NO_BEEP
 
+    # skip debian rc files
+    unset global_rcs
 # }}} end zsh options
 
 # BEGIN Aliases {{{
