@@ -110,7 +110,12 @@ bindkey -s "^[Oo" "/"
 
     ## History Options
     # share/synchronise history with shells
-    setopt SHARE_HISTORY
+    if [[ $UID -eq 0 ]]
+    then
+        setopt APPEND_HISTORY
+    else
+        setopt SHARE_HISTORY
+    fi
     # no duplicates in history
     setopt HIST_IGNORE_ALL_DUPS
     # delete unused spaces infront of commands in history
