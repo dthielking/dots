@@ -15,6 +15,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 " Simpylfold
 Plugin 'tmhedberg/SimpylFold'
+" vim-puppet
+Plugin 'rodjek/vim-puppet'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -72,7 +75,12 @@ let mapleader=","
 nnoremap j gj
 nnoremap k gk
 " Use keystroke jk instead of <esc>
-inoremap jk<esc>
+inoremap jk <esc>
+
+" vim-airline config
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Fold and show doctstring
 let g:SimpylFold_docstring_preview = 1
