@@ -20,7 +20,7 @@ rollout() {
     for DOT_FILE in `ls`
     do
         # Deployment function
-        cp -r ${DOT_FILES_DIR}/${DOT_FILE} ${HOME}/.${DOT_FILE}
+        cp -r ${DOT_FILES_DIR}/${DOT_FILE} ${HOME}/.${DOT_FILE} 2> /dev/null
     done
 }
 
