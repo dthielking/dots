@@ -63,9 +63,10 @@ gitclone() {
         cd ${VIM_BUNDLE}
     fi
 
-    for REPO in ${GIT_REPOS}
+    for REPO in ${GIT_REPOS[*]}
     do
         REPO_DIR=$(echo $REPO | cut -f2 -d "/")
+        echo "Remote Repo: $REPO\nLocal Directory: $REPO_DIR"
         if [ -e ${VIM_BUNDLE}/${REPO_DIR} ]
         then
             git --git-dir=${VIM_BUNDLE}/${REPO_DIR}/.git --work-tree=${VIM_BUNDLE}/${REPO_DIR} pull
