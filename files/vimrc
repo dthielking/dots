@@ -35,6 +35,8 @@ nnoremap ,<space> :nohlsearch<CR>
 
 
 set foldenable      " enable folding
+set foldmethod=indent
+set foldlevel=99
 
 "" Key mappings
 " Map comma as additional meta char
@@ -44,6 +46,11 @@ nnoremap j gj
 nnoremap k gk
 " Use keystroke jk instead of <esc>
 inoremap jk <esc>
+" Change Buffer in shorter way
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
 
 " vim-airline config
 let g:airline#extensions#tabline#enabled = 1
