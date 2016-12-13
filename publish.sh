@@ -47,7 +47,7 @@ backup () {
         if [ -e ${HOME}/.${DOT_FILE} ]
         then
             echo "Backup: .${DOT_FILE}"
-            cp -r -f ${HOME}/.${DOT_FILE} ${DOT_BACKUP_DIR}/${DOT_FILE}.$(date +%Y%m%d%H%M%S).bak
+            mv ${HOME}/.${DOT_FILE} ${DOT_BACKUP_DIR}/${DOT_FILE}.$(date +%Y%m%d%H%M%S).bak
         fi
     done
 }
