@@ -169,7 +169,6 @@ alias egrep='egrep --color=auto'
 alias hgrep='history 0 |grep --color=auto '
 alias fuck='sudo `history -n -1`'
 alias please=fuck
-alias sysupgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade'
 alias ports='netstat -tlpen'
 # git aliase
 alias ggrep='git grep'
@@ -189,6 +188,12 @@ alias zre='source ~/.zshrc'
 alias -s log=vim
 alias -s pl=vim
 
+if [[ -f /etc/debian_version ]]
+then
+  alias sysupgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade'
+elif [[ -f /etc/arch-release ]] then
+  alias sysupgrade='sudo pacman -Syyu'
+fi
 # }}} END
 
 setopt PROMPT_SUBST
