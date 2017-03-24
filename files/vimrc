@@ -27,12 +27,16 @@ set expandtab                       " tabs are spaces
 set tabstop=4                       " tabs in files are four spaces
 set softtabstop=4                   " same as tabstop but for my one <TAB>
 
+" .yaml files
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+" .py files
+autocmd FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
 " search behavior
 set incsearch                       " search as characters are entered
 set hlsearch                        " highlight matches
 " Stop search highlighting with keystroke ,<space>
 nnoremap ,<space> :nohlsearch<CR>
-
 
 set foldenable      " enable folding
 set foldmethod=indent
@@ -51,6 +55,38 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
+" Move lines
+nnoremap <ESC>[1;5A :m .-2<CR>
+nnoremap <ESC>[1;5B :m .+1<CR>
+nnoremap <ESC>[1;5C :><CR>
+nnoremap <ESC>[1;5D :<<CR>
+vnoremap <ESC>[1;5A :m '<-2<CR>gv
+vnoremap <ESC>[1;5B :m '>+1<CR>gv
+vnoremap <ESC>[1;5C :><CR>gv
+vnoremap <ESC>[1;5D :<<CR>gv
+inoremap <ESC>[1;5A <Esc>:m .-2<CR>gi
+inoremap <ESC>[1;5B <Esc>:m .+1<CR>gi
+inoremap <ESC>[1;5C <Esc>:><CR>gi
+inoremap <ESC>[1;5D <Esc>:<<CR>gi
+
+" enable pastemode with F2 Key
+" stops autoindent and copied it as it is
+set pastetoggle=<F2>
+" scroll line before the fifth line ending
+set scrolloff=5
+
+" return to last line, when opening a file again
+function! ResCur()
+    if line("'\"") <= line("$")
+        normal! g`"
+        return 1
+    endif
+endfunction
+
+augroup resCur
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
+augroup END
 
 " vim-airline config
 let g:airline#extensions#tabline#enabled = 1
