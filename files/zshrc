@@ -10,7 +10,18 @@ SAVEHIST=$HISTSIZE
 HISTFILE=~/.history
 
 # Set /sbin directory in PATH variable to call ifconfig, route etc.
-export PATH=~/bin:/sbin:$PATH
+if [[ -d /sbin ]]
+then
+    export PATH=/sbin:$PATH
+fi
+if [[ -d ~/.local/bin ]]
+then
+    export PATH=~/.local/bin:$PATH
+fi
+if [[ -d ~/bin ]]
+then
+    export PATH=~/bin:/sbin:$PATH
+fi
 
 export EDITOR="vim"
 eval "$(dircolors -b)"

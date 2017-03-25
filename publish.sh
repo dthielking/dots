@@ -17,6 +17,9 @@ declare -a GIT_REPOS
 GIT_REPOS=(
         'vim-airline/vim-airline'
         'rodjek/vim-puppet'
+        'davidhalter/jedi-vim'
+        'vim-syntastic/syntastic'
+        'chase/vim-ansible-yaml'
     )
 
 rollout() {
