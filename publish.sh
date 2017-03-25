@@ -19,7 +19,6 @@ GIT_REPOS=(
         'rodjek/vim-puppet'
     )
 
-
 rollout() {
     cd ${DOT_FILES_DIR}
 
