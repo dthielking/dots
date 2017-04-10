@@ -3,22 +3,21 @@
 ## Purpose: Publish all dotfiles into appropriate directories
 ## Author:  Daniel Thielking
 ## Mail:    github@thielking-vonessen.de
-## Version: 0.2
-## Date:    09/26/2016
+## Version: 0.3
+## Date:    10.04.2017
 
 # Absolute path this script is in. /home/$USERNAME/dots
 REPOPATH=`dirname $(readlink -f $0)`    # Set absolut path to script directory
 DOT_FILES_DIR="${REPOPATH}/files"         # Set files directory
-DOT_BACKUP_DIR="${HOME}/dots_backup"      # Set Backup directory
 GITHUB_URL="https://github.com"
 VIM_DIR="${HOME}/.vim"
 VIM_BUNDLE="${VIM_DIR}/bundle"
 declare -a GIT_REPOS
 GIT_REPOS=(
         'vim-airline/vim-airline'
+        'pearofducks/ansible-vim'
         'rodjek/vim-puppet'
         'vim-syntastic/syntastic'
-        'chase/vim-ansible-yaml'
         'Valloric/YouCompleteMe'
     )
 
@@ -29,28 +28,6 @@ rollout() {
     do
         # Deployment function
         cp -r -f ${DOT_FILES_DIR}/${DOT_FILE} ${HOME}/.${DOT_FILE} 2> /dev/null
-    done
-}
-
-backup () {
-    echo "Doing backups of your current dot files"
-    echo "you will find your old dot files in ${DOT_BACKUP_DIR}"
-
-    cd ${DOT_FILES_DIR}
-
-    for DOT_FILE in `ls`
-    do
-        # Backup function
-        if [ ! -d ${DOT_BACKUP_DIR} ]
-        then
-            mkdir ${DOT_BACKUP_DIR}
-        fi
-
-        if [ -e ${HOME}/.${DOT_FILE} ]
-        then
-            echo "Backup: .${DOT_FILE}"
-            mv ${HOME}/.${DOT_FILE} ${DOT_BACKUP_DIR}/${DOT_FILE}.$(date +%Y%m%d%H%M%S).bak
-        fi
     done
 }
 
@@ -88,8 +65,7 @@ usage () {
 while [ $# -gt 0 ]
 do
     case $1 in
-        -b)  backup;;
-        -i)  backup && rollout && gitclone;;
+        -i)  rollout && gitclone;;
         -g)  gitclone;;
         -u)  cd $REPOPATH && git pull && rollout;;
         -s)  cd $REPOPATH && git status;;
