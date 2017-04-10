@@ -20,6 +20,7 @@ GIT_REPOS=(
         'davidhalter/jedi-vim'
         'vim-syntastic/syntastic'
         'chase/vim-ansible-yaml'
+        'Valloric/YouCompleteMe'
     )
 
 rollout() {
