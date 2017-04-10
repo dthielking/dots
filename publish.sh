@@ -50,6 +50,12 @@ gitclone() {
             git --git-dir=${VIM_BUNDLE}/${REPO_DIR}/.git --work-tree=${VIM_BUNDLE}/${REPO_DIR} pull
         else
             git clone ${GITHUB_URL}/${REPO}
+            if [ ${REPO_DIR} = 'YouCompleteMe' ]
+            then
+                cd ${VIM_BUNDLE}/${REPO_DIR}
+                git submodule update --init --recursive
+                ./install.py
+            fi
         fi
     done
 }
