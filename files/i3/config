@@ -154,3 +154,17 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+# Custom Configuration
+# Set Volume
+bindcode 121 exec --no-startup-id pactl set-sink-mute 0 toggle 
+bindcode 122 exec --no-startup-id pactl set-sink-volume 0 -5%
+bindcode 123 exec --no-startup-id pactl set-sink-volume 0 +5%
+# Toggle microphone on/off
+bindcode 198 exec --no-startup-id pactl set-source-mute 0 toggle
+# Set backlight brightness
+bindcode 232 exec --no-startup-id xbacklight -time 0 -dec 5
+bindcode 233 exec --no-startup-id xbacklight -time 0 -inc 5
+# Touchpad enable/disable
+bindsym $mod+t exec --no-startup-id "synclient TouchpadOff=1"
+bindsym $mod+Shift+t exec --no-startup-id "synclient TouchpadOff=0"
