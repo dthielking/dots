@@ -185,14 +185,12 @@ mode "$mode_launcher" {
   bindsym Return mode "default"
 }
 
-bindsym $mod+Delete mode "system_mode"
 # Control sleep/hybernate/reboot/shutdown
 ##
 # system
 ##
 set $mode_system    [L]OCK       LOG[O]UT       [S]USPEND       [R]EBOOT       [P]OWEROFF
 bindsym $mod+Delete mode "$mode_system"
-bindsym Ctrl+$mod+BackSpace mode "$mode_system"
 mode "$mode_system" {
     bindsym l exec $psst ~/.i3/i3exit.sh lock, mode "default"
     bindsym o exec $psst ~/.i3/i3exit.sh logout, mode "default"
