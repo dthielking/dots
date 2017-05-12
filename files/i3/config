@@ -176,10 +176,10 @@ bindsym $mod+Shift+t exec --no-startup-id "synclient TouchpadOff=0"
 set $mode_launcher Launch: [f]irefox [c]hrome [i]congnito-chrome [t]hunderbird
 bindsym $mod+o mode "$mode_launcher"
 mode "$mode_launcher" {
-  bindsym f exec firefox
-  bindsym t exec thunderbird
-  bindsym c exec google-chrome-beta
-  bindsym i exec google-chrome-beta --incognito
+  bindsym f exec firefox; mode "default"
+  bindsym t exec thunderbird; mode "default"
+  bindsym c exec google-chrome-beta; mode "default"
+  bindsym i exec google-chrome-beta --incognito; mode "default"
 
   bindsym Escape mode "default"
   bindsym Return mode "default"
@@ -187,17 +187,22 @@ mode "$mode_launcher" {
 
 bindsym $mod+Delete mode "system_mode"
 # Control sleep/hybernate/reboot/shutdown
+##
+# system
+##
+set $mode_system    [L]OCK       LOG[O]UT       [S]USPEND       [R]EBOOT       [P]OWEROFF
+bindsym $mod+Delete mode "$mode_system"
+bindsym Ctrl+$mod+BackSpace mode "$mode_system"
 mode "$mode_system" {
-  bindsym l exec --no-startup-id i3exit lock, "d
-  bindsym e exec --no-startup-id i3exit logout
-  bindsym s exec --no-startup-id i3exit suspend
-  bindsym h exec --no-startup-id i3exit hibernate
-  bindsym r exec --no-startup-id i3exit reboot
-  bindsym Shift+s exec --no-startup-id i3exit shutdown
+    bindsym l exec $psst ~/.i3/i3exit.sh lock, mode "default"
+    bindsym o exec $psst ~/.i3/i3exit.sh logout, mode "default"
+    bindsym s exec $psst ~/.i3/i3exit.sh suspend, mode "default"
+    bindsym r exec $psst ~/.i3/i3exit.sh reboot, mode "default"
+    bindsym p exec $psst ~/.i3/i3exit.sh poweroff, mode "default"
 
-  # back to normal: Enter or Escap
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 # Set some aditional modifier to get a more fancy window manager
