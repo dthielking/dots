@@ -13,11 +13,11 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+#font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 8
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -152,19 +152,59 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3status --config ~/.i3/i3status.conf
 }
+# Custom execution on i3 startup
+# Disable Touchpad at i3wm startup
+exec --no-startup-id "synclient TouchpadOff=1"
 
-# Custom Configuration
+# Custom Configuration for FN-Keys
 # Set Volume
-bindcode 121 exec --no-startup-id pactl set-sink-mute 0 toggle 
-bindcode 122 exec --no-startup-id pactl set-sink-volume 0 -5%
-bindcode 123 exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 # Toggle microphone on/off
-bindcode 198 exec --no-startup-id pactl set-source-mute 0 toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 0 toggle
 # Set backlight brightness
-bindcode 232 exec --no-startup-id xbacklight -time 0 -dec 5
-bindcode 233 exec --no-startup-id xbacklight -time 0 -inc 5
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -time 0 -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -time 0 -inc 5
 # Touchpad enable/disable
 bindsym $mod+t exec --no-startup-id "synclient TouchpadOff=1"
 bindsym $mod+Shift+t exec --no-startup-id "synclient TouchpadOff=0"
+
+# Enable launcher for firefox, thunderbird and chrome
+set $mode_launcher Launch: [f]irefox [c]hrome [i]congnito-chrome [t]hunderbird
+bindsym $mod+o mode "$mode_launcher"
+mode "$mode_launcher" {
+  bindsym f exec firefox
+  bindsym t exec thunderbird
+  bindsym c exec google-chrome-beta
+  bindsym i exec google-chrome-beta --incognito
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+}
+
+bindsym $mod+Delete mode "system_mode"
+# Control sleep/hybernate/reboot/shutdown
+mode "$mode_system" {
+  bindsym l exec --no-startup-id i3exit lock, "d
+  bindsym e exec --no-startup-id i3exit logout
+  bindsym s exec --no-startup-id i3exit suspend
+  bindsym h exec --no-startup-id i3exit hibernate
+  bindsym r exec --no-startup-id i3exit reboot
+  bindsym Shift+s exec --no-startup-id i3exit shutdown
+
+  # back to normal: Enter or Escap
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+# Set some aditional modifier to get a more fancy window manager
+# Sets border of windows to 0 pixel to get maximum size of windows
+new_window normal 0
+# Save more space on screen
+hide_edge_borders both
+
+# Execute keepass only in floating mode
+#for_window [class="keepass2"] floating enabled
