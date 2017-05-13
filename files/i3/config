@@ -189,8 +189,9 @@ set $mode_workspace Move workspace: [L]EFT       [R]IGTH
 bindsym $mod+n mode "$mode_workspace"
 mode "$mode_workspace" {
     bindsym l exec i3-msg move workspace to output left, mode "default"
+    bindsym Left exec i3-msg move workspace to output left, mode "default"
     bindsym r exec i3-msg move workspace to output right, mode "default"
-
+    bindsym Right exec i3-msg move workspace to output right, mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
