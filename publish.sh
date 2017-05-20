@@ -27,29 +27,11 @@ rollout() {
     for DOT_FILE in `ls`
     do
         # Link function
-        ln -s {DOT_FILES_DIR}/${DOT_FILE} ~/.${DOT_FILE} 2> /dev/null
+        ln -s ${DOT_FILES_DIR}/${DOT_FILE} ~/.${DOT_FILE} 2> /dev/null
     done
 }
 
 gitclone() {
-    echo "Cloning all your Configured Git Repositorys for vim"
-
-    if [ -e ${VIM_BUNDLE} ]
-    then
-        cd ${VIM_BUNDLE}
-    else
-        mkdir -p ${VIM_BUNDLE}
-        cd ${VIM_BUNDLE}
-    fi
-
-    for REPO in ${GIT_REPOS[*]}
-    do
-        REPO_DIR=$(echo $REPO | cut -f2 -d "/")
-        if [ -e ${VIM_BUNDLE}/${REPO_DIR} ]
-        then
-            git --git-dir=${VIM_BUNDLE}/${REPO_DIR}/.git --work-tree=${VIM_BUNDLE}/${REPO_DIR} pull
-        else
-            git clone ${GITHUB_URL}/${REPO}
             if [ ${REPO_DIR} = 'YouCompleteMe' ]
             then
                 cd ${VIM_BUNDLE}/${REPO_DIR}

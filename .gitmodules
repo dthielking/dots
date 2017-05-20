@@ -3,3 +3,6 @@
 [submodule "files/vim/bundle/vim-airline"]
 	path = files/vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+[submodule "files/vim/bundle/YouCompleteMe"]
+	path = files/vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
