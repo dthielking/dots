@@ -26,8 +26,8 @@ rollout() {
 
     for DOT_FILE in `ls`
     do
-        # Deployment function
-        cp -r -f ${DOT_FILES_DIR}/${DOT_FILE} ${HOME}/.${DOT_FILE} 2> /dev/null
+        # Link function
+        ln -s {DOT_FILES_DIR}/${DOT_FILE} ~/.${DOT_FILE} 2> /dev/null
     done
 }
 
@@ -71,7 +71,7 @@ usage () {
 while [ $# -gt 0 ]
 do
     case $1 in
-        -i)  rollout && gitclone;;
+        -i)  rollout;;
         -g)  gitclone;;
         -u)  cd $REPOPATH && git pull && rollout;;
         -s)  cd $REPOPATH && git status;;
