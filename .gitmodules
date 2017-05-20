@@ -1,5 +1,5 @@
 [submodule "files/oh-my-zsh"] path = files/oh-my-zsh
-	url = git@github.com:dthielking/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh
 [submodule "files/vim/bundle/vim-airline"]
 	path = files/vim/bundle/vim-airline
-	url = git@github.com:dthielking/vim-airline
+	url = https://github.com/vim-airline/vim-airline
