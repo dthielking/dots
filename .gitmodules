@@ -1,3 +1,2 @@
-[submodule "files/vim/bundle/Vundle.vim"]
-	path = files/vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "files/oh-my-zsh"] path = files/oh-my-zsh
+	url = git@github.com:dthielking/oh-my-zsh
