@@ -57,20 +57,11 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# Use vim as default editor
+export EDITOR='vim'
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -80,6 +71,33 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# User aliases
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias hgrep='history 0 |grep --color=auto '
+alias fuck='sudo `history -n -1`'
+alias please=fuck
+alias ports='netstat -tlpen'
+# git aliase
+alias ggrep='git grep'
+alias gst='git status'
+alias gad='git add'
+alias gadd=gad
+alias gcom='git commit -v'
+alias gom=gcom
+alias giff='git diff'
+# No glob aliases
+alias find='noglob find'
+alias systemctl='noglob systemctl'
+# Alias for sourcing .zshrc
+alias zre='source ~/.zshrc'
+
+# System upgrade alias
+if [[ -f /etc/debian_version ]]
+then
+  alias sysupgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade'
+elif [[ -f /etc/arch-release ]] then
+  alias sysupgrade='sudo pacman -Syyu'
+fi
+
