@@ -42,7 +42,7 @@ fetch_submodules() {
 }
 
 install_youcompleteme() {
-    if [[ -x '${VIM_BUNDLE}/YouCompleteMe/install.py' ]]
+    if [[ -x "${VIM_BUNDLE}/YouCompleteMe/install.py" ]]
     then
         cd ${VIM_BUNDLE}/YouCompleteMe
         ./install.py
