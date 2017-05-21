@@ -5,7 +5,7 @@
 ## Mail:    github@thielking-vonessen.de
 ## Version: 0.3
 ## Date:    10.04.2017
-
+set -x
 # Absolute path this script is in. /home/$USERNAME/dots
 REPOPATH=`dirname $(readlink -f $0)`    # Set absolut path to script directory
 DOT_FILES_DIR="${REPOPATH}/files"         # Set files directory
@@ -13,14 +13,6 @@ GITHUB_URL="https://github.com"
 VIM_DIR="${HOME}/.vim"
 VIM_BUNDLE="${VIM_DIR}/bundle"
 GIT=`which git`
-declare -a GIT_REPOS
-GIT_REPOS=(
-        'vim-airline/vim-airline'
-        'pearofducks/ansible-vim'
-        'rodjek/vim-puppet'
-        'vim-syntastic/syntastic'
-        'Valloric/YouCompleteMe'
-    )
 
 rollout() {
     cd ${DOT_FILES_DIR}
@@ -42,7 +34,7 @@ fetch_submodules() {
 }
 
 install_youcompleteme() {
-    if [[ -x "${VIM_BUNDLE}/YouCompleteMe/install.py" ]]
+    if [[ -x "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py" ]]
     then
         cd ${VIM_BUNDLE}/YouCompleteMe
         ./install.py
