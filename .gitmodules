@@ -6,3 +6,6 @@
 [submodule "files/vim/bundle/YouCompleteMe"]
 	path = files/vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "files/vim/bundle/ansible-vim"]
+	path = files/vim/bundle/ansible-vim
+	url = https://github.com/pearofducks/ansible-vim.git
