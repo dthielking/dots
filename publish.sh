@@ -29,14 +29,14 @@ fetch_submodules() {
 
     if [[ -x ${GIT} ]]
     then
-            $GIT submodule update --init --recursive
+            $GIT submodule update --init --recursive --quiet
     fi
 }
 
 install_youcompleteme() {
     if [[ -x "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py" ]]
     then
-        cd "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py"
+        cd "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe"
         ./install.py
     fi
 }
