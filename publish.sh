@@ -36,7 +36,7 @@ fetch_submodules() {
 install_youcompleteme() {
     if [[ -x "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py" ]]
     then
-        cd ${VIM_BUNDLE}/YouCompleteMe
+        cd "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py"
         ./install.py
     fi
 }
