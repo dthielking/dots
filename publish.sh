@@ -12,6 +12,7 @@ DOT_FILES_DIR="${REPOPATH}/files"         # Set files directory
 GITHUB_URL="https://github.com"
 VIM_DIR="${HOME}/.vim"
 VIM_BUNDLE="${VIM_DIR}/bundle"
+GIT=`which git`
 declare -a GIT_REPOS
 GIT_REPOS=(
         'vim-airline/vim-airline'
@@ -31,32 +32,34 @@ rollout() {
     done
 }
 
-gitclone() {
-            if [ ${REPO_DIR} = 'YouCompleteMe' ]
-            then
-                cd ${VIM_BUNDLE}/${REPO_DIR}
-                git submodule update --init --recursive
-                ./install.py
-            fi
-        fi
-    done
+fetch_submodules() {
+    cd ${REPOPATH}
+
+    if [[ -x ${GIT} ]]
+    then
+            $GIT submodule update --init --recursive
+    fi
+}
+
+install_youcompleteme() {
+    if [[ -x '${VIM_BUNDLE}/YouCompleteMe/install.py' ]]
+    then
+        cd ${VIM_BUNDLE}/YouCompleteMe
+        ./install.py
+    fi
 }
 
 usage () {
     echo -e "HELP:"
     echo -e "\t-i install local files"
-    echo -e "\t-u to upgrade all dotfiles"
-    echo -e "\t-s to check for updates"
     echo -e "\t-h for help"
 }
 
 while [ $# -gt 0 ]
 do
     case $1 in
-        -i)  rollout;;
-        -g)  gitclone;;
-        -u)  cd $REPOPATH && git pull && rollout;;
-        -s)  cd $REPOPATH && git status;;
+        -i)  fetch_submodules && install_youcompleteme && rollout ;;
+        -u)  cd $REPOPATH && git pull && fetch_submodules;;
         -h|-*|*)  usage && return;;
     esac
     shift
