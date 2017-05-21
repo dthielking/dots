@@ -9,3 +9,6 @@
 [submodule "files/vim/bundle/ansible-vim"]
 	path = files/vim/bundle/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim.git
+[submodule "files/vim/bundle/syntastic"]
+	path = files/vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
