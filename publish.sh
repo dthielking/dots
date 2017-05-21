@@ -5,7 +5,10 @@
 ## Mail:    github@thielking-vonessen.de
 ## Version: 0.3
 ## Date:    10.04.2017
-set -x
+
+# Uncomment to get debug info
+# set -x
+
 # Absolute path this script is in. /home/$USERNAME/dots
 REPOPATH=`dirname $(readlink -f $0)`    # Set absolut path to script directory
 DOT_FILES_DIR="${REPOPATH}/files"         # Set files directory
