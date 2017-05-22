@@ -12,9 +12,7 @@
 # Absolute path this script is in. /home/$USERNAME/dots
 REPOPATH=`dirname $(readlink -f $0)`    # Set absolut path to script directory
 DOT_FILES_DIR="${REPOPATH}/files"         # Set files directory
-GITHUB_URL="https://github.com"
 VIM_DIR="${HOME}/.vim"
-VIM_BUNDLE="${VIM_DIR}/bundle"
 GIT=`which git`
 
 rollout() {
@@ -28,19 +26,30 @@ rollout() {
 }
 
 fetch_submodules() {
+    echo -e "\e[32mFetching all submodules for you"
+    echo -e "\e[32mThis will take few minutes"
     cd ${REPOPATH}
 
     if [[ -x ${GIT} ]]
     then
-            $GIT submodule update --init --recursive --quiet
+        UPDATED_SUBMODULE=`$GIT submodule update --init --recursive --quiet`
+    fi
+
+    if [[ $? -eq 0 ]]
+    then
+        echo -e "Fetching completed"
+    else
+        echo -e "\e[31mFetching failed\n"
+        echo "\e[31m$UPDATED_SUBMODULE"
     fi
 }
 
 install_youcompleteme() {
+    echo -e "\e[32mInstalling YouCompleteMe"
     if [[ -x "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py" ]]
     then
         cd "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe"
-        ./install.py
+        ./install.py > /dev/null
     fi
 }
 
