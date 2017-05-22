@@ -26,26 +26,25 @@ rollout() {
 }
 
 fetch_submodules() {
-    echo -e "\e[32mFetching all submodules for you"
-    echo -e "\e[32mThis will take few minutes"
+    echo "Fetching all submodules for you"
+    echo "This will take few minutes"
     cd ${REPOPATH}
 
     if [[ -x ${GIT} ]]
     then
-        UPDATED_SUBMODULE=`$GIT submodule update --init --recursive --quiet`
+        $GIT submodule update --init --recursive --quiet
     fi
 
     if [[ $? -eq 0 ]]
     then
-        echo -e "Fetching completed"
+        echo "Fetching completed"
     else
-        echo -e "\e[31mFetching failed\n"
-        echo "\e[31m$UPDATED_SUBMODULE"
+        echo "Fetching failed\n"
     fi
 }
 
 install_youcompleteme() {
-    echo -e "\e[32mInstalling YouCompleteMe"
+    echo "Installing YouCompleteMe"
     if [[ -x "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py" ]]
     then
         cd "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe"
