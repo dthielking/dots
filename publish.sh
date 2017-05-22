@@ -32,23 +32,29 @@ fetch_submodules() {
 
     if [[ -x ${GIT} ]]
     then
-        $GIT submodule update --init --recursive --quiet
+        UPDATED_MODULES=`${GIT} submodule update --init --recursive --quiet`
     fi
 
     if [[ $? -eq 0 ]]
     then
         echo "Fetching completed"
     else
-        echo "Fetching failed\n"
+        echo "Fetching failed"
     fi
 }
 
 install_youcompleteme() {
-    echo "Installing YouCompleteMe"
-    if [[ -x "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py" ]]
+    if [[ -n "$UPDATED_MODULES" ]]
     then
-        cd "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe"
-        ./install.py > /dev/null
+        if [[ $UPDATED_MODULES =~ .*YouCompleteMe.* ]]
+        then
+            echo "Installing YouCompleteMe"
+            if [[ -x "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py" ]]
+            then
+                cd "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe"
+                ./install.py > /dev/null
+            fi
+        fi
     fi
 }
 
