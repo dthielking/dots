@@ -214,6 +214,14 @@ PS1='[%(!.%F{red}%n%f@%F{yellow}%m%f.%F{green}%n%f@%F{yellow}%m%f):%F{cyan}%~%f]
 # Right Prompt
 RPS1='%(t.[Ding!].%(30t.[Dong!].[%T]))'
 
+# AWS stuff
+function aws-cfn-validate() {
+    if [[ -n "$1" ]]; then
+        aws cloudformation validate-template --template-body "file://$1"
+    else
+        echo 'Need a parameter: Usage aws-cfn-validate $file'
+    fi
+}
 
 # Force to clear Terminal after every Logout
 TRAPEXIT() {
