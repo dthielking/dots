@@ -20,8 +20,11 @@ rollout() {
 
     for DOT_FILE in `ls`
     do
-        # Link function
-        ln -s ${DOT_FILES_DIR}/${DOT_FILE} ~/.${DOT_FILE} 2> /dev/null
+        if [[ ! -L ~/.${DOT_FILE}  ]]
+        then
+            # Link function
+            ln -s ${DOT_FILES_DIR}/${DOT_FILE} ~/.${DOT_FILE} 2> /dev/null
+        fi
     done
 }
 
