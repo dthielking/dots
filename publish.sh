@@ -6,75 +6,55 @@
 ## Version: 0.3
 ## Date:    10.04.2017
 
+# Uncomment to get debug info
+# set -x
+
 # Absolute path this script is in. /home/$USERNAME/dots
 REPOPATH=`dirname $(readlink -f $0)`    # Set absolut path to script directory
 DOT_FILES_DIR="${REPOPATH}/files"         # Set files directory
 GITHUB_URL="https://github.com"
 VIM_DIR="${HOME}/.vim"
 VIM_BUNDLE="${VIM_DIR}/bundle"
-declare -a GIT_REPOS
-GIT_REPOS=(
-        'vim-airline/vim-airline'
-        'pearofducks/ansible-vim'
-        'rodjek/vim-puppet'
-        'vim-syntastic/syntastic'
-        'Valloric/YouCompleteMe'
-    )
+GIT=`which git`
 
 rollout() {
     cd ${DOT_FILES_DIR}
 
     for DOT_FILE in `ls`
     do
-        # Deployment function
-        cp -r -f ${DOT_FILES_DIR}/${DOT_FILE} ${HOME}/.${DOT_FILE} 2> /dev/null
+        # Link function
+        ln -s ${DOT_FILES_DIR}/${DOT_FILE} ~/.${DOT_FILE} 2> /dev/null
     done
 }
 
-gitclone() {
-    echo "Cloning all your Configured Git Repositorys for vim"
+fetch_submodules() {
+    cd ${REPOPATH}
 
-    if [ -e ${VIM_BUNDLE} ]
+    if [[ -x ${GIT} ]]
     then
-        cd ${VIM_BUNDLE}
-    else
-        mkdir -p ${VIM_BUNDLE}
-        cd ${VIM_BUNDLE}
+            $GIT submodule update --init --recursive --quiet
     fi
+}
 
-    for REPO in ${GIT_REPOS[*]}
-    do
-        REPO_DIR=$(echo $REPO | cut -f2 -d "/")
-        if [ -e ${VIM_BUNDLE}/${REPO_DIR} ]
-        then
-            git --git-dir=${VIM_BUNDLE}/${REPO_DIR}/.git --work-tree=${VIM_BUNDLE}/${REPO_DIR} pull
-        else
-            git clone ${GITHUB_URL}/${REPO}
-            if [ ${REPO_DIR} = 'YouCompleteMe' ]
-            then
-                cd ${VIM_BUNDLE}/${REPO_DIR}
-                git submodule update --init --recursive
-                ./install.py
-            fi
-        fi
-    done
+install_youcompleteme() {
+    if [[ -x "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py" ]]
+    then
+        cd "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe"
+        ./install.py
+    fi
 }
 
 usage () {
     echo -e "HELP:"
     echo -e "\t-i install local files"
-    echo -e "\t-u to upgrade all dotfiles"
-    echo -e "\t-s to check for updates"
     echo -e "\t-h for help"
 }
 
 while [ $# -gt 0 ]
 do
     case $1 in
-        -i)  rollout && gitclone;;
-        -g)  gitclone;;
-        -u)  cd $REPOPATH && git pull && rollout;;
-        -s)  cd $REPOPATH && git status;;
+        -i)  fetch_submodules && install_youcompleteme && rollout ;;
+        -u)  cd $REPOPATH && git pull && fetch_submodules;;
         -h|-*|*)  usage && return;;
     esac
     shift

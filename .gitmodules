@@ -1,3 +1,14 @@
-[submodule "files/vim/bundle/Vundle.vim"]
-	path = files/vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "files/oh-my-zsh"] path = files/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh
+[submodule "files/vim/bundle/vim-airline"]
+	path = files/vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "files/vim/bundle/YouCompleteMe"]
+	path = files/vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "files/vim/bundle/ansible-vim"]
+	path = files/vim/bundle/ansible-vim
+	url = https://github.com/pearofducks/ansible-vim.git
+[submodule "files/vim/bundle/syntastic"]
+	path = files/vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
