@@ -20,10 +20,24 @@ rollout() {
 
     for DOT_FILE in `ls`
     do
-        if [[ ! -L ~/.${DOT_FILE}  ]]
+        if [[ ${DOT_FILE} = "config" ]]
         then
-            # Link function
-            ln -s ${DOT_FILES_DIR}/${DOT_FILE} ~/.${DOT_FILE} 2> /dev/null
+            if [[ ! -d ~/.config ]]
+            then
+                mkdir -p ~/.config
+            fi
+
+            CONFIG_FILES=`ls ./config`
+            if [[ ! -L ~/.config/${CONFIG_FILES} ]]
+            then
+                ln -s ${DOT_FILES_DIR}/config/${CONFIG_FILES} ~/.config/${CONFIG_FILES}
+            fi
+        else
+            if [[ ! -L ~/.${DOT_FILE}  ]]
+            then
+                # Link function
+                ln -s ${DOT_FILES_DIR}/${DOT_FILE} ~/.${DOT_FILE} 2> /dev/null
+            fi
         fi
     done
 }
