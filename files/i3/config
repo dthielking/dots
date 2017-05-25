@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
+set $mod4 Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -171,6 +172,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -time 0 -inc 5
 # Touchpad enable/disable
 bindsym $mod+t exec --no-startup-id "synclient TouchpadOff=1"
 bindsym $mod+Shift+t exec --no-startup-id "synclient TouchpadOff=0"
+# Lock screen Mod4+l
+bindsym $mod4+l exec --no-startup-id "i3lock -c 1e1e1e"
 
 # Enable launcher for firefox, thunderbird and chrome
 set $mode_launcher Launch: [f]irefox [c]hrome [i]congnito-chrome [t]hunderbird
@@ -210,7 +213,7 @@ mode "$mode_monitor" {
 ##
 # system
 ##
-set $mode_system   [L]OCK       LOG[O]UT       [S]USPEND      [R]EBOOT      [P]OWEROFF
+set $mode_system   [L]OCK       LOG[O]UT       [S]USPEND      [R]EBOOT      [P]OWEROFF
 bindsym $mod+Delete mode "$mode_system"
 mode "$mode_system" {
     bindsym l exec $psst ~/.i3/i3exit.sh lock, mode "default"
@@ -231,4 +234,4 @@ new_window normal 0
 hide_edge_borders both
 
 # Execute keepass only in floating mode
-#for_window [class="keepass2"] floating enabled
+for_window [class="keepass2"] floating enabled
