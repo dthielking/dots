@@ -227,6 +227,9 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
+# Autostart section
+exec --no-startup-id /usr/bin/nextcloud
+
 # Set some aditional modifier to get a more fancy window manager
 # Sets border of windows to 0 pixel to get maximum size of windows
 new_window normal 0
