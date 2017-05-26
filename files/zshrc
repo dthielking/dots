@@ -71,8 +71,8 @@ export EDITOR='vim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# Adds possibility to go back to the parent folder with cd ..<TAB>$                             
-zstyle ':completion:*' special-dirs true$
+# Adds possibility to go back to the parent folder with cd ..<TAB>
+zstyle ':completion:*' special-dirs true
 
 # User aliases
 alias fgrep='fgrep --color=auto'
