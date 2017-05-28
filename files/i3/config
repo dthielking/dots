@@ -153,7 +153,14 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status --config ~/.i3/i3status.conf
+        # i3bar is visible
+        mode dock
+        # workspaces are visible
+        workspace_buttons yes
+
+        #status_command i3status --config ~/.i3/i3status.conf
+        #status_command i3blocks --config ~/.i3/i3blocks.conf
+        status_command i3blocks
 }
 # Custom execution on i3 startup
 # Disable Touchpad at i3wm startup
