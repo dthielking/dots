@@ -39,33 +39,71 @@ cursor_shape = block
 #cursor = #dcdccc
 #cursor_foreground = #dcdccc
 
-foreground = #dcdccc
-#foreground_bold = #ffffff
-background = #000000
+#background= #232323
+#foreground= #A0A0A0
+#
+##colorBD=    #CFCFCF
+##colorUL=    #A0A0A0
+##colorIT=    #686868
+#
+##BLK
+#color0= #303030
+#color8= #686868
+#
+##RED
+#color9= #FFA7DA
+#color1= #D370A3
+#
+##GRN
+#color10=#A3D572
+#color2= #6D9E3F
+#
+##BLU
+#color12=#98CBFE
+#color4= #6095C5
+#
+##YEL
+#color11=#EFBD8B
+#color3= #B58858
+#
+##CYN
+#color14=#75DAA9
+#color6= #3BA275
+#
+##MAG
+#color13=#E5B0FF
+#color5= #AC7BDE
+#
+##WHT
+#color7= #CFCFCF
+#color15=#FFFFFF
 
-# 20% background transparency (requires a compositor)
-#background = rgba(63, 63, 63, 0.8)
+foreground= #D7D0C7
+background= #151515
 
-# If unset, will reverse foreground and background
-highlight = #a8a8a8
-
-# Colors from color0 to color254 can be set
-color0 = #3f3f3f
-color1 = #705050
-color2 = #60b48a
-color3 = #dfaf8f
-color4 = #506070
-color5 = #dc8cc3
-color6 = #8cd0d3
-color7 = #dcdccc
-color8 = #709080
-color9 = #dca3a3
-color10 = #c3bf9f
-color11 = #f0dfaf
-color12 = #94bff3
-color13 = #ec93d3
-color14 = #93e0e3
-color15 = #ffffff
+color0=   #101010
+color8=   #404040
+#red
+color1=   #E84F4F
+color9=   #D23D3D
+#green
+color2=   #68C55E
+color10=# #67CF5E
+#yellow
+color3=  #E1AA5D
+color11= #F39D21
+#blue
+color4=  #7DC1CF
+color12= #4E9FB1
+#magenta
+color5=  #9B64FB
+color13= #8542FF
+#cyan
+color6=  #6D878D
+color14= #42717B
+#white
+color7=  #dddddd
+color15= #dddddd
 
 [hints]
 #font = Monospace 12
