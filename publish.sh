@@ -78,6 +78,7 @@ install_youcompleteme() {
 usage () {
     echo -e "HELP:"
     echo -e "\t-i install local files"
+    echo -e "\t-u updates all local submodules"
     echo -e "\t-h for help"
 }
 
@@ -86,7 +87,7 @@ do
     case $1 in
         -i)  fetch_submodules && install_youcompleteme && rollout ;;
         -u)  cd $REPOPATH && git pull && fetch_submodules;;
-        -h|-*|*)  usage && return;;
+        -h|-*|*)  usage;;
     esac
     shift
 done
