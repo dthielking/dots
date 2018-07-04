@@ -32,6 +32,18 @@ rollout() {
             then
                 ln -s ${DOT_FILES_DIR}/config/${CONFIG_FILES} ~/.config/${CONFIG_FILES}
             fi
+        elif [[ ${DOT_FILE} = "bin" ]]
+        then
+            if [[ ! -d ~/bin ]]
+            then
+                mkdir -p ~/bin
+            fi
+
+            BIN_FILES=`ls ./bin`
+            if [[ ! -L ~/bin/${BIN_FILES} ]]
+            then
+                ln -s ${DOT_FILES_DIR}/bin/${BIN_FILES} ~/bin/${BIN_FILES}
+            fi
         else
             if [[ ! -L ~/.${DOT_FILE}  ]]
             then
