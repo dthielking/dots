@@ -75,6 +75,9 @@ export EDITOR='vim'
 # Adds possibility to go back to the parent folder with cd ..<TAB>
 zstyle ':completion:*' special-dirs true
 
+# Disable Beep in terminal
+setopt NO_BEEP
+
 # User aliases
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
