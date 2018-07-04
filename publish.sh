@@ -60,20 +60,6 @@ fetch_submodules() {
     fi
 }
 
-install_youcompleteme() {
-    if [[ -n "$UPDATED_MODULES" ]]
-    then
-        if [[ $UPDATED_MODULES =~ .*YouCompleteMe.* ]]
-        then
-            echo "Installing YouCompleteMe"
-            if [[ -x "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe/install.py" ]]
-            then
-                cd "${DOT_FILES_DIR}/vim/bundle/YouCompleteMe"
-                ./install.py > /dev/null
-            fi
-        fi
-    fi
-}
 
 usage () {
     echo -e "HELP:"
@@ -85,7 +71,7 @@ usage () {
 while [ $# -gt 0 ]
 do
     case $1 in
-        -i)  fetch_submodules && install_youcompleteme && rollout ;;
+        -i)  fetch_submodules && rollout ;;
         -u)  cd $REPOPATH && git pull && fetch_submodules;;
         -h|-*|*)  usage;;
     esac
