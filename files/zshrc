@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 ZSH_DISABLE_COMPFIX=true
 
 # Path to your oh-my-zsh installation.
@@ -125,4 +126,9 @@ fi
 if [[ -f ~/.zshrc_custom/docker.sh ]]
 then
     source ~/.zshrc_custom/docker.sh
+fi
+
+if [[ -f ~/bin/az.completion ]]
+then
+    source ~/bin/az.completion
 fi
