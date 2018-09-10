@@ -7,20 +7,25 @@
 ## Date:    10.04.2017
 
 # Uncomment to get debug info
-# set -x
+set -x
 
 # Absolute path this script is in. /home/$USERNAME/dots
 REPOPATH=`dirname $(readlink -f $0)`    # Set absolut path to script directory
 DOT_FILES_DIR="${REPOPATH}/files"         # Set files directory
 VIM_DIR="${HOME}/.vim"
 GIT=`which git`
+DOWNLOAD_EXTRA_BIN_FILES=(https://raw.githubusercontent.com/dthielking/az-sub-loader/master/az-sub-loader.py
+    https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
+    https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_windows_amd64.zip
+    https://raw.githubusercontent.com/Azure/azure-cli/master/az.completion)
 
 rollout() {
     cd ${DOT_FILES_DIR}
 
-    for DOT_FILE in `ls`
+    DOT_FILES=`ls`
+    for DOT_FILE in ${DOT_FILES[*]}
     do
-        if [[ ${DOT_FILE} = "config" ]]
+        if [[ ${DOT_FILE} = config ]]
         then
             if [[ ! -d ~/.config ]]
             then
@@ -32,7 +37,7 @@ rollout() {
             then
                 ln -s ${DOT_FILES_DIR}/config/${CONFIG_FILES} ~/.config/${CONFIG_FILES}
             fi
-        elif [[ ${DOT_FILE} = "bin" ]]
+        elif [[ ${DOT_FILE} = bin ]]
         then
             if [[ ! -d ~/bin ]]
             then
@@ -40,12 +45,30 @@ rollout() {
             fi
 
             BIN_FILES=`ls ./bin`
-            if [[ ! -L ~/bin/${BIN_FILES} ]]
-            then
-                ln -s ${DOT_FILES_DIR}/bin/${BIN_FILES} ~/bin/${BIN_FILES}
-            fi
+            for bin_file in ${BIN_FILES[*]}
+            do
+                if [[ ! -L ~/bin/${bin_file} ]]
+                then
+                    ln -s ${DOT_FILES_DIR}/bin/${bin_file} ~/bin/${bin_file}
+                fi
+            done
+
+            cd ${HOME}/bin/
+            for file in ${DOWNLOAD_EXTRA_BIN_FILES[*]}
+            do
+                wget -N -q ${file}
+            done
+
+            BIN_ZIPS=`find . -iname "*.zip"`
+            for zips in $BIN_ZIPS
+            do
+                unzip -qf ${zips}
+                rm -f ${zips}
+            done
+            chmod +x ./*
+            cd - > /dev/null
         else
-            if [[ ! -L ~/.${DOT_FILE}  ]]
+            if [[ ! -L ~/.${DOT_FILE} ]]
             then
                 # Link function
                 ln -s ${DOT_FILES_DIR}/${DOT_FILE} ~/.${DOT_FILE} 2> /dev/null
