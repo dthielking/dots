@@ -7,13 +7,14 @@
 ## Date:    10.04.2017
 
 # Uncomment to get debug info
-set -x
+# set -x
 
 # Absolute path this script is in. /home/$USERNAME/dots
-REPOPATH=`dirname $(readlink -f $0)`    # Set absolut path to script directory
+REPOPATH=`pwd $0`    # Set absolut path to script directory
 DOT_FILES_DIR="${REPOPATH}/files"         # Set files directory
 VIM_DIR="${HOME}/.vim"
 GIT=`which git`
+WGET=`which wget`
 DOWNLOAD_EXTRA_BIN_FILES=(https://raw.githubusercontent.com/dthielking/az-sub-loader/master/az-sub-loader.py
     https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
     https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_windows_amd64.zip
@@ -53,10 +54,17 @@ rollout() {
                 fi
             done
 
+            echo $WGET
+            if [ ! -e "${WGET}" ]
+            then
+                echo "wget not availabe please install!"
+                exit 1
+            fi
+
             cd ${HOME}/bin/
             for file in ${DOWNLOAD_EXTRA_BIN_FILES[*]}
             do
-                wget -N -q ${file}
+                ${WGET} -N -q ${file}
             done
 
             BIN_ZIPS=`find . -iname "*.zip"`
