@@ -131,6 +131,11 @@ then
     source ~/.zshrc_custom/docker.sh
 fi
 
+if [[ -f ~/.zshrc_custom/python_env_setup.sh ]]
+then
+    source ~/.zshrc_custom/python_env_setup.sh
+fi
+
 if [[ -f ~/bin/az.completion ]]
 then
     source ~/bin/az.completion
