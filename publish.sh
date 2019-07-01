@@ -8,6 +8,7 @@
 
 # Uncomment to get debug info
 # set -x
+set -e
 
 # Absolute path this script is in. /home/$USERNAME/dots
 REPOPATH=`pwd $0`    # Set absolut path to script directory
@@ -19,6 +20,7 @@ DOWNLOAD_EXTRA_BIN_FILES=(https://raw.githubusercontent.com/dthielking/az-sub-lo
     https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
     https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_windows_amd64.zip
     https://raw.githubusercontent.com/Azure/azure-cli/master/az.completion)
+PYTHON_PACKAGE_FILE="${REPOPATH}/files/python3/default_packages.txt"
 
 rollout() {
     cd ${DOT_FILES_DIR}
@@ -54,7 +56,6 @@ rollout() {
                 fi
             done
 
-            echo $WGET
             if [ ! -e "${WGET}" ]
             then
                 echo "wget not availabe please install!"
@@ -88,7 +89,6 @@ rollout() {
 fetch_submodules() {
     echo "Fetching all submodules for you"
     echo "This will take few minutes"
-    cd ${REPOPATH}
 
     if [[ -x ${GIT} ]]
     then
@@ -103,6 +103,30 @@ fetch_submodules() {
     fi
 }
 
+bootstrap_python() {
+    python3=$(command -v python3)
+    pip3=$(command -v pip3)
+    if [[ -z "${python3}" ]]; then
+        echo "Python3 not installed on your system."
+        exit 127
+    fi
+    if [[ -z "${pip3}" ]]; then
+        echo "Pip3 is not installed on your system."
+        exit 127
+    fi
+    if [[ -f ${PYTHON_PACKAGE_FILE} ]]; then
+        PIP_REQUIRE_VIRTUALENV="" $pip3 install virtualenvwrapper
+        if [[ -x files/zshrc_custom/python_env_setup.sh ]]; then
+            echo "Setting up default python virtual environment."
+            source files/zshrc_custom/python_env_setup.sh
+            mkvirtualenv -r ${PYTHON_PACKAGE_FILE} default
+        else
+            echo "python_env_setup.sh either not executable or not present."
+        fi
+    else
+        echo "No Python3 bootstrap file present."
+    fi
+}
 
 usage () {
     echo -e "HELP:"
@@ -114,7 +138,7 @@ usage () {
 while [ $# -gt 0 ]
 do
     case $1 in
-        -i)  fetch_submodules && rollout ;;
+        -i)  fetch_submodules && bootstrap_python && rollout ;;
         -u)  cd $REPOPATH && git pull && fetch_submodules;;
         -h|-*|*)  usage;;
     esac

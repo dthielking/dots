@@ -56,7 +56,7 @@ ZSH_CUSTOM=${HOME}/.zshrc_custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws colored-man-pages)
+plugins=(git aws colored-man-pages docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -67,6 +67,7 @@ export EDITOR='vim'
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
