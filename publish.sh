@@ -16,10 +16,7 @@ DOT_FILES_DIR="${REPOPATH}/files"         # Set files directory
 VIM_DIR="${HOME}/.vim"
 GIT=`which git`
 WGET=`which wget`
-DOWNLOAD_EXTRA_BIN_FILES=(https://raw.githubusercontent.com/dthielking/az-sub-loader/master/az-sub-loader.py
-    https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
-    https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_windows_amd64.zip
-    https://raw.githubusercontent.com/Azure/azure-cli/master/az.completion)
+DOWNLOAD_EXTRA_BIN_FILES=(https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.dmg)
 PYTHON_PACKAGE_FILE="${REPOPATH}/files/python3/default_packages.txt"
 
 rollout() {
