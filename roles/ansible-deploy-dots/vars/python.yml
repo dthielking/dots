@@ -17,3 +17,5 @@ dots_python_venv_packages:
   - ipython
   - jedi
   - molecule
+  - docker
+  - tox

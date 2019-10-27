@@ -6,6 +6,8 @@
         executable: /usr/bin/pip3
         name: "{{ dots_python_packages }}"
         state: present
+      environment:
+        PIP_REQUIRE_VIRTUALENV: 'false'
 
     - name: create default venv
       command: "virtualenv {{ ansible_env.HOME }}/.virtualenvs/{{ dots_python_venv_name }}"
