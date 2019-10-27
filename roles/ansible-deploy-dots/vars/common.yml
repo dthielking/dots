@@ -1,0 +1,10 @@
+---
+dots_dot_files:
+  - gitconfig
+  - tmux.conf
+  - vimrc
+  - zshrc
+
+dots_dot_dirs:
+  - vim
+  - zshrc_custom

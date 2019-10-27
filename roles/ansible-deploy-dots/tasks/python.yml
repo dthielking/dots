@@ -1,0 +1,25 @@
+---
+- name: python setup
+  block:
+    - name: install virtualenv packages
+      pip:
+        executable: /usr/bin/pip3
+        name: "{{ dots_python_packages }}"
+        state: present
+
+    - name: create default venv
+      command: "virtualenv {{ ansible_env.HOME }}/.virtualenvs/{{ dots_python_venv_name }}"
+      args:
+        creates: "{{ ansible_env.HOME }}/.virtualenvs/{{ dots_python_venv_name }}"
+      # register: venv_result
+      # changed_when: not "venv_result.stdout in 'Not overwriting existing'"
+      when: dots_create_python_venv
+
+    - name: install virtualenv packages
+      pip:
+        virtualenv: "~/.virtualenvs/{{ dots_python_venv_name }}"
+        name: "{{ dots_python_venv_packages }}"
+        state: present
+      when: dots_create_python_venv
+  tags:
+    - python

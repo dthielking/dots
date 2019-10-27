@@ -1,0 +1,19 @@
+---
+# Systemwide Python packages
+dots_python_packages:
+  - virtualenvwrapper
+  - virtualenv
+
+# Create default virtualenv
+dots_create_python_venv: true
+# Virtualenvironment configuration
+dots_python_venv_name: default
+
+# Virtualenv packages to install
+dots_python_venv_packages:
+  - ansible
+  - black
+  - flake8
+  - ipython
+  - jedi
+  - molecule

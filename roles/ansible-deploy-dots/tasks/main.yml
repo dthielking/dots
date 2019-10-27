@@ -1,0 +1,40 @@
+---
+- name: includes vars
+  block:
+    - name: include common vars
+      include_vars: common.yml
+
+    - name: include os package vars
+      include_vars: "{{ ansible_os_family | lower }}.yml"
+
+    - name: include python package vars
+      include_vars: python.yml
+  tags:
+    - always
+
+- name: include packages
+  include_tasks: packages.yml
+  tags:
+    - install
+
+- name: include copy dots
+  include_tasks: dots.yml
+  tags:
+    - dots
+
+- name: include git tasks
+  include_tasks: git.yml
+  tags:
+    - git
+
+- name: include python tasks
+  import_tasks: python.yml
+  tags:
+    - python
+
+- name: change user shell
+  user:
+      name: "{{ ansible_user_id }}"
+      shell: /bin/zsh
+  tags:
+    - user

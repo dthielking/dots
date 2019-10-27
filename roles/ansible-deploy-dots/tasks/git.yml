@@ -1,0 +1,33 @@
+- name: git tasks
+  block:
+  - name: checkout oh-my-zsh repository
+    git:
+      dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+      repo: "https://github.com/robbyrussell/oh-my-zsh.git"
+      force: yes
+      accept_hostkey: yes
+      clone: yes
+      update: yes
+      version: master
+
+  - name: checkout vim syntastic extension repository
+    git:
+      dest: "{{ ansible_env.HOME }}/.vim/bundle/syntastic"
+      repo: "https://github.com/vim-syntastic/syntastic.git"
+      force: yes
+      accept_hostkey: yes
+      clone: yes
+      update: yes
+      version: master
+
+  - name: checkout vim airline extension repository
+    git:
+      dest: "{{ ansible_env.HOME }}/.vim/bundle/vim-airline"
+      repo: "https://github.com/vim-airline/vim-airline.git"
+      force: yes
+      accept_hostkey: yes
+      clone: yes
+      update: yes
+      version: master
+  tags:
+    - git

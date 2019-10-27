@@ -1,0 +1,6 @@
+---
+dots_os_packages:
+  - git
+  - zsh
+  - htop
+  - nmap

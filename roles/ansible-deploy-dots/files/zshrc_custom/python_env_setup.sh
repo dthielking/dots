@@ -1,7 +1,7 @@
 # activate virtualenvwrapper
 if [ -x /usr/local/bin/virtualenvwrapper.sh ]
     then
-        export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+        export VIRTUALENVWRAPPER_PYTHON=$(command -v python3)
         source /usr/local/bin/virtualenvwrapper.sh
 
         # pip should only run if there is a virtualenv currently activated

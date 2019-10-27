@@ -1,0 +1,17 @@
+- name: copy files
+  block:
+    - name: copy dot files
+      copy:
+        src: "{{ item }}"
+        dest: "{{ ansible_env.HOME }}/.{{ item }}"
+      with_items:
+        - "{{ dots_dot_files }}"
+
+    - name: copy dot dirs
+      copy:
+        src: "{{ item }}/"
+        dest: "{{ ansible_env.HOME }}/.{{ item }}/"
+      with_items:
+        - "{{ dots_dot_dirs }}"
+  tags:
+    - dots

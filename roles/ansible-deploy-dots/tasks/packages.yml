@@ -1,0 +1,17 @@
+- name: install packages
+  block:
+    - name: install linux packages
+      package:
+        state: present
+        name: "{{ dots_os_packages }}"
+  when: ansible_system == "Linux"
+  become: true
+
+- name: install packages
+  block:
+    - name: install mac packages
+      homebrew:
+        state: present
+        name: "{{ dots_os_packages }}"
+        update_homebrew: true
+  when: ansible_system == "Darwin"

@@ -1,8 +1,0 @@
-[submodule "files/oh-my-zsh"] path = files/oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh
-[submodule "files/vim/bundle/vim-airline"]
-	path = files/vim/bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline
-[submodule "files/vim/bundle/syntastic"]
-	path = files/vim/bundle/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
