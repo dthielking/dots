@@ -2,3 +2,4 @@
 *.swp
 *files/vim/.netrwhist
 .vscode
+**/__pycache__
