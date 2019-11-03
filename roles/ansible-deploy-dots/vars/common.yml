@@ -8,3 +8,5 @@ dots_dot_files:
 dots_dot_dirs:
   - vim
   - zshrc_custom
+
+dots_enable_epel_repo: true

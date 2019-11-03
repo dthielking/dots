@@ -4,8 +4,9 @@ dots_os_packages:
   - zsh
   - python3
   - python3-pip
-  - python-setuptools
   - python3-devel
   - which
   - gcc
   - vim
+  - htop
+  - sudo

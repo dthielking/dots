@@ -1,17 +1,23 @@
-- name: install packages
+- name: enable epel repo
   block:
+    - name: install epel repository
+      package:
+        name: epel-release
+      when:
+      - ansible_os_family == "RedHat"
+      - dots_enable_epel_repo
+
     - name: install linux packages
       package:
         state: present
         name: "{{ dots_os_packages }}"
-  when: ansible_system == "Linux"
-  become: true
+      when: ansible_system == "Linux"
 
-- name: install packages
-  block:
     - name: install mac packages
       homebrew:
         state: present
         name: "{{ dots_os_packages }}"
         update_homebrew: true
-  when: ansible_system == "Darwin"
+      when: ansible_system == "Darwin"
+  tags:
+    - always

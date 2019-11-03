@@ -6,3 +6,4 @@ dots_os_packages:
   - python3-pip
   - python-setuptools
   - vim
+  - htop
