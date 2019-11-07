@@ -19,3 +19,4 @@ dots_python_venv_packages:
   - molecule
   - docker
   - tox
+  - pytest-xdist

@@ -1,17 +1,20 @@
 - name: copy files
   block:
+    - name: create dot dirs
+      file:
+        path: "{{ ansible_env.HOME }}/.{{ item }}"
+        recurse: yes
+        state: directory
+        mode: 0750
+      with_items:
+        - "{{ dots_dot_dirs }}"
+
     - name: copy dot files
       copy:
         src: "{{ item }}"
         dest: "{{ ansible_env.HOME }}/.{{ item }}"
+        mode: 0640
       with_items:
         - "{{ dots_dot_files }}"
-
-    - name: copy dot dirs
-      copy:
-        src: "{{ item }}/"
-        dest: "{{ ansible_env.HOME }}/.{{ item }}/"
-      with_items:
-        - "{{ dots_dot_dirs }}"
   tags:
     - dots

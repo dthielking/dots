@@ -4,9 +4,13 @@ dots_dot_files:
   - tmux.conf
   - vimrc
   - zshrc
+  - vim/autoload/pathogen.vim
+  - zshrc_custom/python_env_setup.sh
+  - zshrc_custom/themes/myowntheme.zsh-theme
 
 dots_dot_dirs:
-  - vim
-  - zshrc_custom
+  - vim/autoload
+  - vim/bundle
+  - zshrc_custom/themes
 
 dots_enable_epel_repo: true
