@@ -8,3 +8,5 @@ dots_homebrew_packages:
 
 dots_cask_packages:
   - vagrant
+  - virtualbox
+  - virtualbox-extension-pack
