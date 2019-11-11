@@ -1,6 +1,10 @@
 ---
-dots_os_packages:
+dots_homebrew_packages:
   - git
   - zsh
   - htop
   - nmap
+  - packer
+
+dots_cask_packages:
+  - vagrant
