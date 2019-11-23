@@ -10,3 +10,4 @@ dots_cask_packages:
   - vagrant
   - virtualbox
   - virtualbox-extension-pack
+  - rectangle

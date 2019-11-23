@@ -20,3 +20,4 @@ dots_python_venv_packages:
   - docker
   - tox
   - pytest-xdist
+  - python-vagrant
