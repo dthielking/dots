@@ -7,7 +7,19 @@ dots_homebrew_packages:
   - packer
 
 dots_cask_packages:
+  - docker
+  - firefox
+  - google-chrome
+  - homebrew/cask-drivers/logitech-options
+  - iterm2
+  - macpass
+  - rectangle
+  - spotify
+  - transmission
   - vagrant
   - virtualbox
+  - virtualbox
   - virtualbox-extension-pack
-  - rectangle
+  - visual-studio-code
+  - google-drive-file-stream
+  - open-in-code

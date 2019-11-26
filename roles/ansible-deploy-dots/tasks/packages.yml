@@ -19,11 +19,11 @@
       homebrew:
         state: present
         name: "{{ dots_homebrew_packages }}"
-        update_homebrew: true
+        update_homebrew: false
 
     - name:
       homebrew_cask:
         name: "{{ dots_cask_packages }}"
         state: present
-        update_homebrew: true
+        update_homebrew: false
   when: ansible_system == "Darwin"
