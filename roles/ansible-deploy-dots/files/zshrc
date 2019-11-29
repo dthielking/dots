@@ -141,3 +141,8 @@ if [[ -f ~/bin/az.completion ]]
 then
     source ~/bin/az.completion
 fi
+
+if [[ -d ~/.virtualenvs/default ]]
+then
+    workon default
+fi
