@@ -1,8 +1,9 @@
 - name: linux packages
   block:
     - name: install epel repository
-      package:
+      yum:
         name: epel-release
+        state: present
       when:
       - ansible_os_family == "RedHat"
       - dots_enable_epel_repo
@@ -21,7 +22,7 @@
         name: "{{ dots_homebrew_packages }}"
         update_homebrew: false
 
-    - name:
+    - name: install homebrew cask packages
       homebrew_cask:
         name: "{{ dots_cask_packages }}"
         state: present
